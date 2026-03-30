@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ny Huynh — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --navy-light: #e8edf5;
+    --navy-pale: #f4f6fb;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --gray-light: #e5e7eb;
+    --gray-pale: #f9fafb;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--navy);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 56px;
+    border-bottom: 1px solid var(--gray-light);
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray);
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--white) !important;
+    background: var(--navy);
+    padding: 7px 16px;
+    border-radius: 20px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .hero-left {
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--gray-light);
+  }
+  .hero-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 44px;
+    line-height: 1.1;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 400px;
+    margin-bottom: 32px;
+  }
+  .tool-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--gray-light);
+    color: var(--navy);
+    background: var(--white);
+    letter-spacing: 0.01em;
+  }
+  .hero-meta {
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .available-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero-right {
+    background: var(--navy-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  .dashboard-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 4px 24px rgba(15,31,61,0.08);
+  }
+  .dash-topbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-light);
+    background: var(--gray-pale);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .dash-label { font-size: 11px; color: var(--gray); margin-left: 6px; }
+  .dash-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .kpi {
+    padding: 12px 14px;
+    border-right: 1px solid var(--gray-light);
+  }
+  .kpi:last-child { border-right: none; }
+  .kpi-label { font-size: 9px; color: var(--gray); margin-bottom: 3px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+  .kpi-val { font-size: 16px; font-weight: 500; color: var(--navy); font-family: var(--serif); }
+  .kpi-delta { font-size: 9px; margin-top: 2px; }
+  .up { color: #16a34a; }
+  .dn { color: #dc2626; }
+  .dash-chart {
+    padding: 16px 14px 12px;
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 90px;
+  }
+  .bar-g {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .bar {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    transition: opacity 0.2s;
+  }
+  .bar:hover { opacity: 0.75; }
+  .bar-navy { background: var(--navy); }
+  .bar-accent { background: var(--accent-light); }
+  .bar-lbl { font-size: 8px; color: var(--gray); }
+  .dash-footer {
+    padding: 10px 14px;
+    border-top: 1px solid var(--gray-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--gray);
+  }
+  .live-badge {
+    font-size: 9px;
+    font-weight: 500;
+    color: #16a34a;
+    background: #dcfce7;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  /* ── METRICS ROW ── */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .metric {
+    padding: 32px 48px;
+    border-right: 1px solid var(--gray-light);
+  }
+  .metric:last-child { border-right: none; }
+  .metric-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .metric-num span { color: var(--accent); }
+  .metric-desc { font-size: 12px; color: var(--gray); line-height: 1.6; }
+
+  /* ── SECTION DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 48px;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .divider-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    white-space: nowrap;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--gray-light);
+  }
+
+  /* ── PROJECTS ── */
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .project {
+    padding: 40px 48px;
+    border-right: 1px solid var(--gray-light);
+    transition: background 0.2s;
+  }
+  .project:last-child { border-right: none; }
+  .project:hover { background: var(--navy-pale); }
+  .proj-num {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .proj-img {
+    width: 100%;
+    height: 180px;
+    background: var(--navy-light);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .proj-img-placeholder {
+    font-size: 11px;
+    color: var(--gray);
+    text-align: center;
+    padding: 16px;
+  }
+  /* Mini dashboard mockup inside project card */
+  .mini-dash {
+    width: 85%;
+    background: white;
+    border: 1px solid var(--gray-light);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .mini-bar { height: 20px; background: var(--navy); display: flex; align-items: center; padding: 0 8px; gap: 4px; }
+  .mini-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+  .mini-kpis { display: grid; grid-template-columns: repeat(4,1fr); padding: 6px; gap: 4px; }
+  .mini-kpi { background: var(--navy-pale); border-radius: 3px; padding: 4px; }
+  .mini-kpi-l { font-size: 7px; color: var(--gray); }
+  .mini-kpi-v { font-size: 10px; font-weight: 500; color: var(--navy); }
+  .mini-chart { display: flex; align-items: flex-end; gap: 3px; padding: 6px 8px 6px; height: 36px; }
+  .mini-b { flex: 1; border-radius: 2px 2px 0 0; }
+
+  /* RFM visual */
+  .rfm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; width: 80%; }
+  .rfm-seg {
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+  .rfm-1 { background: #0f1f3d; color: white; }
+  .rfm-2 { background: #1a3260; color: white; }
+  .rfm-3 { background: #e8edf5; color: #0f1f3d; }
+  .rfm-4 { background: #f4f6fb; color: #6b7280; }
+  .rfm-sub { font-size: 8px; font-weight: 400; opacity: 0.7; margin-top: 1px; }
+
+  .proj-category {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .proj-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .proj-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .proj-meta {
+    display: flex;
+    gap: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--gray-light);
+  }
+  .meta-item { font-size: 11px; }
+  .meta-val { font-weight: 500; color: var(--navy); display: block; }
+  .meta-lbl { color: var(--gray); font-size: 10px; }
+  .proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: 16px;
+    transition: gap 0.2s;
+  }
+  .proj-link:hover { gap: 10px; }
+  .proj-link svg { width: 14px; height: 14px; }
+
+  /* ── SKILLS ── */
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .skill {
+    padding: 20px 28px;
+    border-right: 1px solid var(--gray-light);
+  }
+  .skill:last-child { border-right: none; }
+  .skill-name { font-size: 12px; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
+  .skill-cat { font-size: 10px; color: var(--gray); margin-bottom: 8px; }
+  .skill-bar { height: 3px; background: var(--gray-light); border-radius: 2px; }
+  .skill-fill { height: 100%; border-radius: 2px; background: var(--navy); }
+
+  /* ── ABOUT STRIP ── */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .about-left {
+    padding: 40px 48px;
+    border-right: 1px solid var(--gray-light);
+    background: var(--navy);
+    color: var(--white);
+  }
+  .about-heading {
+    font-family: var(--serif);
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .about-heading em { font-style: italic; color: #93c5fd; }
+  .about-sub { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+  .about-right {
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .about-item {}
+  .about-item-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+  .about-item-val { font-size: 13px; color: var(--navy); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-top: 1px solid var(--gray-light);
+  }
+  .footer-left { font-size: 12px; color: var(--gray); }
+  .footer-left a { color: var(--accent); text-decoration: none; }
+  .footer-right { display: flex; gap: 16px; align-items: center; }
+  .footer-link {
+    font-size: 12px;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: var(--navy); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.5s ease both;
+  }
+  .hero-tag { animation-delay: 0.05s; }
+  .hero-title { animation-delay: 0.1s; }
+  .hero-sub { animation-delay: 0.15s; }
+  .tool-pills { animation-delay: 0.2s; }
+  .hero-meta { animation-delay: 0.25s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 40px 24px; }
+    .hero-title { font-size: 32px; }
+    .metrics { grid-template-columns: 1fr; }
+    .metric { border-right: none; border-bottom: 1px solid var(--gray-light); padding: 24px; }
+    .projects { grid-template-columns: 1fr; }
+    .project { border-right: none; padding: 32px 24px; }
+    .skills { grid-template-columns: repeat(3,1fr); }
+    .skill:nth-child(3) { border-right: none; }
+    .skill:nth-child(4), .skill:nth-child(5) { border-top: 1px solid var(--gray-light); }
+    .about { grid-template-columns: 1fr; }
+    .about-left { border-right: none; border-bottom: 1px solid var(--gray-light); }
+    .about-right { padding: 24px; }
+    footer { flex-direction: column; gap: 12px; padding: 20px 24px; }
+    .divider { padding: 14px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">Ny Huynh</div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:your@email.com" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-tag">Data Analytics · Freelance</div>
+      <h1 class="hero-title">Turning raw data into decisions that <em>move the business.</em></h1>
+      <p class="hero-sub">Specialized in e-commerce analytics — P&L reporting, customer segmentation, and performance dashboards. Based in Ho Chi Minh City, open to international clients.</p>
+      <div class="tool-pills">
+        <span class="pill">Looker Studio</span>
+        <span class="pill">Power BI</span>
+        <span class="pill">Power Query</span>
+        <span class="pill">Google Sheets</span>
+        <span class="pill">SQL</span>
+        <span class="pill">RFM Analysis</span>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <span class="available-dot"></span>
+      Available for freelance projects &nbsp;·&nbsp; Ho Chi Minh City, Vietnam
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="dashboard-card">
+      <div class="dash-topbar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span class="dash-label">Profit & Loss Analytics — Looker Studio</span>
+      </div>
+      <div class="dash-kpis">
+        <div class="kpi">
+          <div class="kpi-label">Revenue</div>
+          <div class="kpi-val">1.1B</div>
+          <div class="kpi-delta up">+9.6% YoY</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Total Cost</div>
+          <div class="kpi-val">787M</div>
+          <div class="kpi-delta dn">+20.9%</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Net Profit</div>
+          <div class="kpi-val">298M</div>
+          <div class="kpi-delta dn">-12.1%</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Margin</div>
+          <div class="kpi-val">27.4%</div>
+          <div class="kpi-delta dn">-19.8%</div>
+        </div>
+      </div>
+      <div class="dash-chart">
+        <div class="bar-g"><div class="bar bar-navy" style="height:48%"></div><div class="bar-lbl">Aug</div></div>
+        <div class="bar-g"><div class="bar bar-navy" style="height:54%"></div><div class="bar-lbl">Sep</div></div>
+        <div class="bar-g"><div class="bar bar-navy" style="height:56%"></div><div class="bar-lbl">Oct</div></div>
+        <div class="bar-g"><div class="bar bar-navy" style="height:58%"></div><div class="bar-lbl">Nov</div></div>
+        <div class="bar-g"><div class="bar bar-navy" style="height:52%"></div><div class="bar-lbl">Dec</div></div>
+        <div class="bar-g"><div class="bar bar-navy" style="height:72%"></div><div class="bar-lbl">Jan</div></div>
+        <div class="bar-g"><div class="bar bar-accent" style="height:60%"></div><div class="bar-lbl">Feb</div></div>
+        <div class="bar-g"><div class="bar bar-accent" style="height:55%"></div><div class="bar-lbl">Mar</div></div>
+      </div>
+      <div class="dash-footer">
+        <span>Jan 2024 – Mar 2025 · 10 SKUs · 4 Categories</span>
+        <span class="live-badge">Live dashboard</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics">
+  <div class="metric">
+    <div class="metric-num">2<span>+</span></div>
+    <div class="metric-desc">Client projects delivered with live dashboards and actionable business insights</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">10<span>+</span></div>
+    <div class="metric-desc">SKUs analyzed across e-commerce categories with SKU-level P&L tracking</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">13<span>mo</span></div>
+    <div class="metric-desc">Of financial data processed and visualized for trend analysis and decision support</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<div class="divider" id="work">
+  <span class="divider-label">Selected work</span>
+  <div class="divider-line"></div>
+</div>
+
+<section class="projects">
+  <!-- PROJECT 1 -->
+  <div class="project">
+    <div class="proj-num">Project — 01</div>
+    <div class="proj-img">
+      <!-- REPLACE: thay thẻ img bên dưới bằng ảnh chụp dashboard thật của bạn -->
+      <!-- <img src="dashboard-pl.png" alt="P&L Dashboard" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div class="mini-dash">
+        <div class="mini-bar">
+          <div class="mini-dot"></div><div class="mini-dot"></div><div class="mini-dot"></div>
+        </div>
+        <div class="mini-kpis">
+          <div class="mini-kpi"><div class="mini-kpi-l">Revenue</div><div class="mini-kpi-v">1.1B</div></div>
+          <div class="mini-kpi"><div class="mini-kpi-l">Cost</div><div class="mini-kpi-v">787M</div></div>
+          <div class="mini-kpi"><div class="mini-kpi-l">Profit</div><div class="mini-kpi-v">298M</div></div>
+          <div class="mini-kpi"><div class="mini-kpi-l">Margin</div><div class="mini-kpi-v">27%</div></div>
+        </div>
+        <div class="mini-chart">
+          <div class="mini-b bar-navy" style="height:40%"></div>
+          <div class="mini-b bar-navy" style="height:55%"></div>
+          <div class="mini-b bar-navy" style="height:50%"></div>
+          <div class="mini-b bar-navy" style="height:65%"></div>
+          <div class="mini-b bar-navy" style="height:48%"></div>
+          <div class="mini-b bar-navy" style="height:70%"></div>
+          <div class="mini-b" style="height:52%;background:var(--navy-light)"></div>
+          <div class="mini-b" style="height:45%;background:var(--navy-light)"></div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-category">E-commerce · Financial Analytics</div>
+    <h2 class="proj-title">Profit & Loss Analytics Dashboard</h2>
+    <p class="proj-desc">Automated P&L reporting for an e-commerce seller managing 10 SKUs across 4 product categories. Connected Google Sheets to Looker Studio for real-time monitoring with MoM and YoY comparison. Identified that high-growth SKUs were losing margin due to subsidy over-reliance.</p>
+    <a href="https://lookerstudio.google.com/reporting/0c1b8da1-6b5b-4d7e-9b7d-23198b2483df" target="_blank" class="proj-link">
+      View live dashboard
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+    </a>
+    <div class="proj-meta">
+      <div class="meta-item"><span class="meta-val">Looker Studio</span><span class="meta-lbl">Visualization</span></div>
+      <div class="meta-item"><span class="meta-val">Google Sheets</span><span class="meta-lbl">Data source</span></div>
+      <div class="meta-item"><span class="meta-val">13 months</span><span class="meta-lbl">Data range</span></div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project">
+    <div class="proj-num">Project — 02</div>
+    <div class="proj-img">
+      <!-- REPLACE: thay thẻ img bên dưới bằng ảnh chụp Power BI dashboard thật của bạn -->
+      <!-- <img src="dashboard-rfm.png" alt="RFM Dashboard" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div class="rfm-grid">
+        <div class="rfm-seg rfm-1">Champions<div class="rfm-sub">Recent · Frequent · High spend</div></div>
+        <div class="rfm-seg rfm-2">Loyal<div class="rfm-sub">Consistent buyers</div></div>
+        <div class="rfm-seg rfm-3">At Risk<div class="rfm-sub">Declining activity</div></div>
+        <div class="rfm-seg rfm-4">Lost<div class="rfm-sub">No recent purchase</div></div>
+      </div>
+    </div>
+    <div class="proj-category">E-commerce · Customer Analytics</div>
+    <h2 class="proj-title">Customer Insight — RFM Segmentation</h2>
+    <p class="proj-desc">Customer segmentation using the RFM model (Recency, Frequency, Monetary) to identify Champions, Loyal, At-Risk, and Lost customers. Built with Power Query for data transformation and Power BI for interactive visualization, enabling targeted marketing decisions.</p>
+    <a href="#" class="proj-link">
+      View live dashboard
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+    </a>
+    <div class="proj-meta">
+      <div class="meta-item"><span class="meta-val">Power BI</span><span class="meta-lbl">Visualization</span></div>
+      <div class="meta-item"><span class="meta-val">Power Query</span><span class="meta-lbl">Data prep</span></div>
+      <div class="meta-item"><span class="meta-val">RFM Model</span><span class="meta-lbl">Methodology</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="divider">
+  <span class="divider-label">Skills & tools</span>
+  <div class="divider-line"></div>
+</div>
+
+<section class="skills">
+  <div class="skill">
+    <div class="skill-name">Looker Studio</div>
+    <div class="skill-cat">Reporting</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Power BI</div>
+    <div class="skill-cat">Visualization</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Power Query</div>
+    <div class="skill-cat">Data preparation</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Google Sheets</div>
+    <div class="skill-cat">Data management</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">SQL</div>
+    <div class="skill-cat">Querying</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="divider" id="about">
+  <span class="divider-label">About</span>
+  <div class="divider-line"></div>
+</div>
+
+<section class="about">
+  <div class="about-left">
+    <h2 class="about-heading">Data analyst. <em>Problem solver.</em> E-commerce specialist.</h2>
+    <p class="about-sub">I help e-commerce businesses understand their numbers — from revenue trends to customer behavior — so they can make faster, smarter decisions.</p>
+  </div>
+  <div class="about-right">
+    <div class="about-item">
+      <div class="about-item-label">Specialization</div>
+      <div class="about-item-val">E-commerce analytics, financial reporting, customer segmentation</div>
+    </div>
+    <div class="about-item">
+      <div class="about-item-label">Location</div>
+      <div class="about-item-val">Ho Chi Minh City, Vietnam<br>Open to remote & international clients</div>
+    </div>
+    <div class="about-item">
+      <div class="about-item-label">Languages</div>
+      <div class="about-item-val">Vietnamese (native)<br>English (professional)</div>
+    </div>
+    <div class="about-item">
+      <div class="about-item-label">Contact</div>
+      <div class="about-item-val"><a href="mailto:your@email.com" style="color:var(--accent);text-decoration:none;">your@email.com</a><br>
+      <a href="https://linkedin.com/in/yourprofile" style="color:var(--accent);text-decoration:none;">LinkedIn ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2025 Ny Huynh · <a href="mailto:your@email.com">your@email.com</a></div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/yourprofile" class="footer-link">LinkedIn</a>
+    <a href="https://lookerstudio.google.com/reporting/0c1b8da1-6b5b-4d7e-9b7d-23198b2483df" target="_blank" class="footer-link">Looker Studio</a>
+  </div>
+</footer>
+
+</body>
+</html>

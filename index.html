@@ -6,771 +6,526 @@
 <title>Ny Huynh — Data Analyst</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --gold:#C9A84C;--gold-light:#F5EDD6;--gold-pale:#FDFAF3;
+  --teal:#2A7F6F;--teal-light:#D4EDEA;--teal-pale:#EEF7F6;
+  --g900:#1C1C1A;--g700:#3D3D3A;--g500:#6B6B67;--g300:#BFBFBA;--g100:#EFEDE8;--g50:#F7F5F0;
+  --white:#FFFFFF;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--white);color:var(--g900);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased;}
 
-  :root {
-    --navy: #0f1f3d;
-    --navy-mid: #1a3260;
-    --navy-light: #e8edf5;
-    --navy-pale: #f4f6fb;
-    --white: #ffffff;
-    --gray: #6b7280;
-    --gray-light: #e5e7eb;
-    --gray-pale: #f9fafb;
-    --accent: #2563eb;
-    --accent-light: #dbeafe;
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
-  }
+/* NAV */
+nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 48px;height:52px;border-bottom:1px solid var(--g100);position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);z-index:100;}
+.nav-left{display:flex;gap:24px;}
+.nav-center{font-family:var(--serif);font-size:16px;color:var(--g900);text-align:center;}
+.nav-right{display:flex;gap:24px;justify-content:flex-end;align-items:center;}
+.nav-link{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);text-decoration:none;transition:color .2s;}
+.nav-link:hover{color:var(--g900);}
+.nav-cta{font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--white);background:var(--teal);padding:6px 16px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:var(--g900);}
 
-  html { scroll-behavior: smooth; }
+/* MASTHEAD */
+.masthead{border-bottom:1px solid var(--g100);padding:64px 48px 48px;display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:start;}
+.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.kicker::before{content:'';width:32px;height:1px;background:var(--gold);}
+.headline{font-family:var(--serif);font-size:52px;line-height:1.05;letter-spacing:-.01em;color:var(--g900);margin-bottom:24px;}
+.headline em{font-style:italic;color:var(--teal);}
+.subhead{font-size:14px;color:var(--g500);line-height:1.75;max-width:500px;margin-bottom:28px;}
+.pills{display:flex;flex-wrap:wrap;gap:6px;}
+.pill{font-size:11px;font-family:var(--mono);padding:4px 10px;background:var(--g50);border:1px solid var(--g100);color:var(--g700);}
+.avail{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--g500);margin-top:28px;}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-  body {
-    font-family: var(--sans);
-    background: var(--white);
-    color: var(--navy);
-    font-size: 15px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+/* PROFILE CARD */
+.profile-card{border:1px solid var(--g100);padding:28px;background:var(--g50);}
+.p-init{width:52px;height:52px;border-radius:50%;background:var(--teal);color:white;font-family:var(--serif);font-size:20px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.p-name{font-family:var(--serif);font-size:19px;margin-bottom:4px;}
+.p-role{font-size:11px;color:var(--teal);font-family:var(--mono);letter-spacing:.05em;margin-bottom:16px;}
+.p-div{height:1px;background:var(--g100);margin:16px 0;}
+.p-row{display:flex;gap:10px;margin-bottom:9px;font-size:12px;}
+.p-lbl{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--g300);min-width:62px;padding-top:2px;}
+.p-val{color:var(--g700);line-height:1.5;}
+.p-val a{color:var(--teal);text-decoration:none;}
 
-  /* ── NAV ── */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 48px;
-    height: 56px;
-    border-bottom: 1px solid var(--gray-light);
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-  }
-  .nav-name {
-    font-family: var(--serif);
-    font-size: 17px;
-    color: var(--navy);
-    letter-spacing: -0.01em;
-  }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--gray);
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--navy); }
-  .nav-cta {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--white) !important;
-    background: var(--navy);
-    padding: 7px 16px;
-    border-radius: 20px;
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
+/* TICKER */
+.ticker{border-bottom:1px solid var(--g100);display:grid;grid-template-columns:repeat(4,1fr);background:var(--g50);}
+.t-item{padding:24px 32px;border-right:1px solid var(--g100);}
+.t-item:last-child{border-right:none;}
+.t-num{font-family:var(--serif);font-size:36px;color:var(--gold);line-height:1;margin-bottom:6px;}
+.t-num span{font-size:20px;}
+.t-lbl{font-size:11px;color:var(--g500);line-height:1.5;}
 
-  /* ── HERO ── */
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 480px;
-    border-bottom: 1px solid var(--gray-light);
-  }
-  .hero-left {
-    padding: 56px 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 1px solid var(--gray-light);
-  }
-  .hero-tag {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 1px;
-    background: var(--accent);
-  }
-  .hero-title {
-    font-family: var(--serif);
-    font-size: 44px;
-    line-height: 1.1;
-    color: var(--navy);
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
-  }
-  .hero-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
-  .hero-sub {
-    font-size: 14px;
-    color: var(--gray);
-    line-height: 1.7;
-    max-width: 400px;
-    margin-bottom: 32px;
-  }
-  .tool-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .pill {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1px solid var(--gray-light);
-    color: var(--navy);
-    background: var(--white);
-    letter-spacing: 0.01em;
-  }
-  .hero-meta {
-    font-size: 11px;
-    color: var(--gray);
-    margin-top: 32px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .available-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #22c55e;
-    display: inline-block;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
+/* SECTION HEADER */
+.s-head{display:flex;align-items:center;gap:16px;padding:12px 48px;border-bottom:1px solid var(--g100);background:var(--g50);}
+.s-head-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g500);white-space:nowrap;}
+.s-head-line{flex:1;height:1px;background:var(--g100);}
+.s-head-num{font-family:var(--mono);font-size:10px;color:var(--g300);}
 
-  .hero-right {
-    background: var(--navy-pale);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-  }
-  .dashboard-card {
-    background: var(--white);
-    border: 1px solid var(--gray-light);
-    border-radius: 10px;
-    overflow: hidden;
-    width: 100%;
-    max-width: 460px;
-    box-shadow: 0 4px 24px rgba(15,31,61,0.08);
-  }
-  .dash-topbar {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--gray-light);
-    background: var(--gray-pale);
-  }
-  .dot { width: 8px; height: 8px; border-radius: 50%; }
-  .dot-r { background: #ff5f57; }
-  .dot-y { background: #febc2e; }
-  .dot-g { background: #28c840; }
-  .dash-label { font-size: 11px; color: var(--gray); margin-left: 6px; }
-  .dash-kpis {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-bottom: 1px solid var(--gray-light);
-  }
-  .kpi {
-    padding: 12px 14px;
-    border-right: 1px solid var(--gray-light);
-  }
-  .kpi:last-child { border-right: none; }
-  .kpi-label { font-size: 9px; color: var(--gray); margin-bottom: 3px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
-  .kpi-val { font-size: 16px; font-weight: 500; color: var(--navy); font-family: var(--serif); }
-  .kpi-delta { font-size: 9px; margin-top: 2px; }
-  .up { color: #16a34a; }
-  .dn { color: #dc2626; }
-  .dash-chart {
-    padding: 16px 14px 12px;
-    display: flex;
-    align-items: flex-end;
-    gap: 5px;
-    height: 90px;
-  }
-  .bar-g {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    height: 100%;
-    justify-content: flex-end;
-  }
-  .bar {
-    width: 100%;
-    border-radius: 3px 3px 0 0;
-    transition: opacity 0.2s;
-  }
-  .bar:hover { opacity: 0.75; }
-  .bar-navy { background: var(--navy); }
-  .bar-accent { background: var(--accent-light); }
-  .bar-lbl { font-size: 8px; color: var(--gray); }
-  .dash-footer {
-    padding: 10px 14px;
-    border-top: 1px solid var(--gray-light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 10px;
-    color: var(--gray);
-  }
-  .live-badge {
-    font-size: 9px;
-    font-weight: 500;
-    color: #16a34a;
-    background: #dcfce7;
-    padding: 2px 8px;
-    border-radius: 10px;
-  }
+/* PROJECTS */
+.projects{display:grid;grid-template-columns:1fr 1fr;}
+.proj{padding:40px 48px;border-right:1px solid var(--g100);border-bottom:1px solid var(--g100);transition:background .2s;}
+.proj:nth-child(2){border-right:none;}
+.proj:hover{background:var(--gold-pale);}
+.proj-eye{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.proj-num{font-family:var(--mono);font-size:10px;color:var(--g300);letter-spacing:.08em;}
+.proj-cat{font-size:10px;font-weight:500;color:var(--teal);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;}
 
-  /* ── METRICS ROW ── */
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid var(--gray-light);
-  }
-  .metric {
-    padding: 32px 48px;
-    border-right: 1px solid var(--gray-light);
-  }
-  .metric:last-child { border-right: none; }
-  .metric-num {
-    font-family: var(--serif);
-    font-size: 48px;
-    color: var(--navy);
-    line-height: 1;
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
-  }
-  .metric-num span { color: var(--accent); }
-  .metric-desc { font-size: 12px; color: var(--gray); line-height: 1.6; }
+/* SLIDESHOW */
+.ss{width:100%;height:200px;border:1px solid var(--g100);overflow:hidden;position:relative;margin-bottom:20px;background:var(--g50);}
+.ss-track{display:flex;width:300%;height:100%;transition:transform .4s ease;}
+.ss-track img{width:33.333%;height:100%;object-fit:cover;object-position:top;flex-shrink:0;}
+.ss-single{width:100%;height:100%;object-fit:cover;object-position:top;}
+.ss-btn{position:absolute;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:rgba(28,28,26,.7);border:none;cursor:pointer;color:white;font-size:16px;display:flex;align-items:center;justify-content:center;}
+.ss-btn:hover{background:var(--g900);}
+.ss-prev{left:8px;}.ss-next{right:8px;}
+.ss-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;}
+.ss-dot{width:5px;height:5px;border-radius:50%;background:white;transition:opacity .2s;}
+.ss-lbl{position:absolute;top:8px;left:8px;font-size:9px;font-family:var(--mono);background:rgba(28,28,26,.7);color:white;padding:3px 8px;letter-spacing:.06em;}
 
-  /* ── SECTION DIVIDER ── */
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 48px;
-    border-bottom: 1px solid var(--gray-light);
-  }
-  .divider-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    white-space: nowrap;
-  }
-  .divider-line {
-    flex: 1;
-    height: 1px;
-    background: var(--gray-light);
-  }
+.proj-title{font-family:var(--serif);font-size:22px;line-height:1.2;color:var(--g900);margin-bottom:10px;}
+.proj-desc{font-size:13px;color:var(--g500);line-height:1.7;margin-bottom:16px;}
 
-  /* ── PROJECTS ── */
-  .projects {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--gray-light);
-  }
-  .project {
-    padding: 40px 48px;
-    border-right: 1px solid var(--gray-light);
-    transition: background 0.2s;
-  }
-  .project:last-child { border-right: none; }
-  .project:hover { background: var(--navy-pale); }
-  .proj-num {
-    font-size: 10px;
-    color: var(--gray);
-    letter-spacing: 0.08em;
-    margin-bottom: 16px;
-    font-weight: 500;
-  }
-  .proj-img {
-    width: 100%;
-    height: 180px;
-    background: var(--navy-light);
-    border-radius: 8px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid var(--gray-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .proj-img-placeholder {
-    font-size: 11px;
-    color: var(--gray);
-    text-align: center;
-    padding: 16px;
-  }
-  /* Mini dashboard mockup inside project card */
-  .mini-dash {
-    width: 85%;
-    background: white;
-    border: 1px solid var(--gray-light);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .mini-bar { height: 20px; background: var(--navy); display: flex; align-items: center; padding: 0 8px; gap: 4px; }
-  .mini-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.3); }
-  .mini-kpis { display: grid; grid-template-columns: repeat(4,1fr); padding: 6px; gap: 4px; }
-  .mini-kpi { background: var(--navy-pale); border-radius: 3px; padding: 4px; }
-  .mini-kpi-l { font-size: 7px; color: var(--gray); }
-  .mini-kpi-v { font-size: 10px; font-weight: 500; color: var(--navy); }
-  .mini-chart { display: flex; align-items: flex-end; gap: 3px; padding: 6px 8px 6px; height: 36px; }
-  .mini-b { flex: 1; border-radius: 2px 2px 0 0; }
+/* FINDINGS */
+.findings{background:var(--teal-pale);border-left:3px solid var(--teal);padding:14px 16px;margin:16px 0;font-size:12px;line-height:1.85;color:var(--g700);}
+.f-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;font-weight:500;}
+.f-rec{margin-top:8px;padding-top:8px;border-top:1px solid var(--teal-light);color:var(--teal);font-weight:500;}
 
-  /* RFM visual */
-  .rfm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; width: 80%; }
-  .rfm-seg {
-    border-radius: 5px;
-    padding: 8px 10px;
-    font-size: 10px;
-    font-weight: 500;
-  }
-  .rfm-1 { background: #0f1f3d; color: white; }
-  .rfm-2 { background: #1a3260; color: white; }
-  .rfm-3 { background: #e8edf5; color: #0f1f3d; }
-  .rfm-4 { background: #f4f6fb; color: #6b7280; }
-  .rfm-sub { font-size: 8px; font-weight: 400; opacity: 0.7; margin-top: 1px; }
+.proj-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;font-family:var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal-light);padding-bottom:1px;transition:gap .2s,border-color .2s;}
+.proj-link:hover{gap:10px;border-color:var(--teal);}
+.proj-link svg{width:12px;height:12px;}
+.proj-meta{display:flex;gap:20px;padding-top:16px;margin-top:16px;border-top:1px solid var(--g100);}
+.m-val{font-size:12px;font-weight:500;color:var(--g900);display:block;}
+.m-lbl{font-size:10px;color:var(--g300);font-family:var(--mono);letter-spacing:.05em;}
 
-  .proj-category {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-  .proj-title {
-    font-family: var(--serif);
-    font-size: 20px;
-    color: var(--navy);
-    line-height: 1.25;
-    margin-bottom: 10px;
-  }
-  .proj-desc {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.65;
-    margin-bottom: 20px;
-  }
-  .proj-meta {
-    display: flex;
-    gap: 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--gray-light);
-  }
-  .meta-item { font-size: 11px; }
-  .meta-val { font-weight: 500; color: var(--navy); display: block; }
-  .meta-lbl { color: var(--gray); font-size: 10px; }
-  .proj-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--accent);
-    text-decoration: none;
-    margin-top: 16px;
-    transition: gap 0.2s;
-  }
-  .proj-link:hover { gap: 10px; }
-  .proj-link svg { width: 14px; height: 14px; }
+/* ALL PROJECTS */
+.proj-list{padding:0 48px;display:grid;grid-template-columns:repeat(3,1fr);}
+.pl-item{padding:18px 20px;border-right:1px solid var(--g100);border-bottom:1px solid var(--g100);font-size:13px;display:flex;align-items:flex-start;gap:10px;}
+.pl-item:nth-child(3n){border-right:none;}
+.pl-item:nth-last-child(-n+3):not(:nth-last-child(n+4)){border-bottom:none;}
+.pl-num{font-family:var(--mono);font-size:10px;color:var(--g300);min-width:20px;padding-top:1px;}
+.pl-name{color:var(--g700);}
+.pl-item.hi{background:var(--gold-pale);}
+.pl-item.hi .pl-name{color:var(--g900);font-weight:500;}
 
-  /* ── SKILLS ── */
-  .skills {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    border-bottom: 1px solid var(--gray-light);
-  }
-  .skill {
-    padding: 20px 28px;
-    border-right: 1px solid var(--gray-light);
-  }
-  .skill:last-child { border-right: none; }
-  .skill-name { font-size: 12px; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
-  .skill-cat { font-size: 10px; color: var(--gray); margin-bottom: 8px; }
-  .skill-bar { height: 3px; background: var(--gray-light); border-radius: 2px; }
-  .skill-fill { height: 100%; border-radius: 2px; background: var(--navy); }
+/* EXPERIENCE */
+.exp-wrap{padding:0 48px;}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:36px 0;border-bottom:1px solid var(--g100);}
+.exp-item:last-child{border-bottom:none;}
+.exp-period{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+.exp-co{font-size:13px;font-weight:500;color:var(--g900);margin-bottom:2px;}
+.exp-loc{font-size:11px;color:var(--g300);font-family:var(--mono);}
+.exp-dept{display:inline-block;font-size:10px;font-family:var(--mono);color:var(--teal);border:1px solid var(--teal-light);padding:2px 8px;margin-bottom:12px;letter-spacing:.06em;}
+.exp-title{font-family:var(--serif);font-size:18px;color:var(--g900);margin-bottom:12px;line-height:1.2;}
+.exp-ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.exp-ul li{font-size:13px;color:var(--g500);line-height:1.65;padding-left:16px;position:relative;}
+.exp-ul li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:12px;}
 
-  /* ── ABOUT STRIP ── */
-  .about {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    border-bottom: 1px solid var(--gray-light);
-  }
-  .about-left {
-    padding: 40px 48px;
-    border-right: 1px solid var(--gray-light);
-    background: var(--navy);
-    color: var(--white);
-  }
-  .about-heading {
-    font-family: var(--serif);
-    font-size: 28px;
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-  .about-heading em { font-style: italic; color: #93c5fd; }
-  .about-sub { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.7; }
-  .about-right {
-    padding: 40px 48px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  .about-item {}
-  .about-item-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 4px;
-  }
-  .about-item-val { font-size: 13px; color: var(--navy); line-height: 1.5; }
+/* SKILLS */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--g100);}
+.sk-group{padding:28px 36px;border-right:1px solid var(--g100);}
+.sk-group:last-child,.sk-group:nth-child(3){border-right:none;}
+.sk-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.sk-lbl::after{content:'';flex:1;height:1px;background:var(--gold-light);}
+.sk-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.sk-tag{font-size:11px;font-family:var(--mono);padding:4px 10px;background:var(--white);border:1px solid var(--g100);color:var(--g700);transition:background .15s,border-color .15s;}
+.sk-tag:hover{background:var(--gold-light);border-color:var(--gold);}
 
-  /* ── FOOTER ── */
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 48px;
-    border-top: 1px solid var(--gray-light);
-  }
-  .footer-left { font-size: 12px; color: var(--gray); }
-  .footer-left a { color: var(--accent); text-decoration: none; }
-  .footer-right { display: flex; gap: 16px; align-items: center; }
-  .footer-link {
-    font-size: 12px;
-    color: var(--gray);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-link:hover { color: var(--navy); }
+/* FOOTER */
+footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(--g900);padding:36px 48px;gap:32px;}
+.ft-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--g300);margin-bottom:12px;}
+.ft-val{font-size:13px;color:var(--g500);line-height:1.8;}
+.ft-val a{color:var(--teal);text-decoration:none;}
+.ft-bottom{padding:16px 48px;border-top:1px solid var(--g100);display:flex;justify-content:space-between;}
+.ft-copy{font-size:11px;color:var(--g300);font-family:var(--mono);}
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero-left > * {
-    animation: fadeUp 0.5s ease both;
-  }
-  .hero-tag { animation-delay: 0.05s; }
-  .hero-title { animation-delay: 0.1s; }
-  .hero-sub { animation-delay: 0.15s; }
-  .tool-pills { animation-delay: 0.2s; }
-  .hero-meta { animation-delay: 0.25s; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 0 24px; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 40px 24px; }
-    .hero-title { font-size: 32px; }
-    .metrics { grid-template-columns: 1fr; }
-    .metric { border-right: none; border-bottom: 1px solid var(--gray-light); padding: 24px; }
-    .projects { grid-template-columns: 1fr; }
-    .project { border-right: none; padding: 32px 24px; }
-    .skills { grid-template-columns: repeat(3,1fr); }
-    .skill:nth-child(3) { border-right: none; }
-    .skill:nth-child(4), .skill:nth-child(5) { border-top: 1px solid var(--gray-light); }
-    .about { grid-template-columns: 1fr; }
-    .about-left { border-right: none; border-bottom: 1px solid var(--gray-light); }
-    .about-right { padding: 24px; }
-    footer { flex-direction: column; gap: 12px; padding: 20px 24px; }
-    .divider { padding: 14px 24px; }
-  }
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 24px;grid-template-columns:1fr auto;}
+  .nav-left{display:none;}
+  .masthead{grid-template-columns:1fr;padding:40px 24px;gap:32px;}
+  .headline{font-size:36px;}
+  .profile-card{display:none;}
+  .ticker{grid-template-columns:1fr 1fr;}
+  .t-item:nth-child(2){border-right:none;}
+  .t-item:nth-child(3){border-top:1px solid rgba(255,255,255,.08);}
+  .projects{grid-template-columns:1fr;}
+  .proj{border-right:none;padding:32px 24px;}
+  .s-head{padding:12px 24px;}
+  .exp-wrap{padding:0 24px;}
+  .exp-item{grid-template-columns:1fr;gap:12px;}
+  .skills{grid-template-columns:1fr 1fr;}
+  .sk-group:nth-child(2n){border-right:none;}
+  .proj-list{padding:0;grid-template-columns:1fr 1fr;}
+  footer{grid-template-columns:1fr;padding:24px;}
+  .ft-bottom{padding:16px 24px;}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.kicker{animation:fadeUp .4s ease both .05s}
+.headline{animation:fadeUp .4s ease both .1s}
+.subhead{animation:fadeUp .4s ease both .15s}
+.pills{animation:fadeUp .4s ease both .2s}
+.avail{animation:fadeUp .4s ease both .25s}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-name">Ny Huynh</div>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="mailto:your@email.com" class="nav-cta">Get in touch</a></li>
-  </ul>
+  <div class="nav-left">
+    <a href="#work" class="nav-link">Work</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#consulting" class="nav-link">Consulting</a>
+    <a href="#skills" class="nav-link">Skills</a>
+  </div>
+  <div class="nav-center">Ny Huynh</div>
+  <div class="nav-right">
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#d5bbacfbbda0acbbbde4e5e4e595b2b8b4bcb9fbb6bab8" class="nav-cta">Hire me</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div>
-      <div class="hero-tag">Data Analytics · Freelance</div>
-      <h1 class="hero-title">Turning raw data into decisions that <em>move the business.</em></h1>
-      <p class="hero-sub">Specialized in e-commerce analytics — P&L reporting, customer segmentation, and performance dashboards. Based in Ho Chi Minh City, open to international clients.</p>
-      <div class="tool-pills">
-        <span class="pill">Looker Studio</span>
-        <span class="pill">Power BI</span>
-        <span class="pill">Power Query</span>
-        <span class="pill">Google Sheets</span>
-        <span class="pill">SQL</span>
-        <span class="pill">RFM Analysis</span>
-      </div>
+<section class="masthead">
+  <div>
+    <div class="kicker">Business Intelligence Analyst · Analytics Engineer · Trainer</div>
+    <h1 class="headline">Data, dashboards,<br>and <em>decisions.</em></h1>
+    <p class="subhead">Business Intelligence Analyst & Analytics Engineer with 5 years of experience at VTA Company, delivering consulting-driven BI and AI solutions across diverse freelance projects in both domestic and international markets. Specialized in designing end-to-end data systems — from ETL pipelines and scalable data models to executive dashboards and AI-powered analytics — supporting decision-making from team to company level.</p>
+    <div class="pills">
+      <span class="pill">Power BI</span>
+      <span class="pill">Looker Studio</span>
+      <span class="pill">Databricks</span>
+      <span class="pill">SQL Server</span>
+      <span class="pill">Azure Data Factory</span>
+      <span class="pill">Tabular Editor 3</span>
+      <span class="pill">Google Dataflow</span>
+      <span class="pill">SSIS</span>
     </div>
-    <div class="hero-meta">
-      <span class="available-dot"></span>
-      Available for freelance projects &nbsp;·&nbsp; Ho Chi Minh City, Vietnam
-    </div>
+    <div class="avail"><span class="avail-dot"></span>Available for freelance, consulting, and remote opportunities in BI, data analytics, and AI-driven solutions.</div>
   </div>
-  <div class="hero-right">
-    <div class="dashboard-card">
-      <div class="dash-topbar">
-        <span class="dot dot-r"></span>
-        <span class="dot dot-y"></span>
-        <span class="dot dot-g"></span>
-        <span class="dash-label">Profit & Loss Analytics — Looker Studio</span>
-      </div>
-      <div class="dash-kpis">
-        <div class="kpi">
-          <div class="kpi-label">Revenue</div>
-          <div class="kpi-val">1.1B</div>
-          <div class="kpi-delta up">+9.6% YoY</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-label">Total Cost</div>
-          <div class="kpi-val">787M</div>
-          <div class="kpi-delta dn">+20.9%</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-label">Net Profit</div>
-          <div class="kpi-val">298M</div>
-          <div class="kpi-delta dn">-12.1%</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-label">Margin</div>
-          <div class="kpi-val">27.4%</div>
-          <div class="kpi-delta dn">-19.8%</div>
-        </div>
-      </div>
-      <div class="dash-chart">
-        <div class="bar-g"><div class="bar bar-navy" style="height:48%"></div><div class="bar-lbl">Aug</div></div>
-        <div class="bar-g"><div class="bar bar-navy" style="height:54%"></div><div class="bar-lbl">Sep</div></div>
-        <div class="bar-g"><div class="bar bar-navy" style="height:56%"></div><div class="bar-lbl">Oct</div></div>
-        <div class="bar-g"><div class="bar bar-navy" style="height:58%"></div><div class="bar-lbl">Nov</div></div>
-        <div class="bar-g"><div class="bar bar-navy" style="height:52%"></div><div class="bar-lbl">Dec</div></div>
-        <div class="bar-g"><div class="bar bar-navy" style="height:72%"></div><div class="bar-lbl">Jan</div></div>
-        <div class="bar-g"><div class="bar bar-accent" style="height:60%"></div><div class="bar-lbl">Feb</div></div>
-        <div class="bar-g"><div class="bar bar-accent" style="height:55%"></div><div class="bar-lbl">Mar</div></div>
-      </div>
-      <div class="dash-footer">
-        <span>Jan 2024 – Mar 2025 · 10 SKUs · 4 Categories</span>
-        <span class="live-badge">Live dashboard</span>
-      </div>
-    </div>
+  <div class="profile-card">
+    <div class="p-init">NH</div>
+    <div class="p-name">Ny Huynh</div>
+    <div class="p-role">BI Analyst · VTA · Freelance NZ</div>
+    <div class="p-div"></div>
+    <div class="p-row"><span class="p-lbl">Email</span><span class="p-val"><a href="/cdn-cgi/l/email-protection#9bf5e2b5f3eee2f5f3aaabaaabdbfcf6faf2f7b5f8f4f6"><span class="__cf_email__" data-cfemail="cfa1b6e1a7bab6a1a7fefffeff8fa8a2aea6a3e1aca0a2">[email&#160;protected]</span></a></span></div>
+    <div class="p-row"><span class="p-lbl">Phone</span><span class="p-val">0976 797 380</span></div>
+    <div class="p-row"><span class="p-lbl">Location</span><span class="p-val">171 Tôn Đản, Ward 15, District 4, HCM</span></div>
+    <div class="p-row"><span class="p-lbl">Experience</span><span class="p-val">5 years · Data Analytics</span></div>
+    <div class="p-row"><span class="p-lbl">Available</span><span class="p-val" style="color:var(--teal)">Freelance / Remote</span></div>
   </div>
 </section>
 
-<!-- METRICS -->
-<section class="metrics">
-  <div class="metric">
-    <div class="metric-num">2<span>+</span></div>
-    <div class="metric-desc">Client projects delivered with live dashboards and actionable business insights</div>
-  </div>
-  <div class="metric">
-    <div class="metric-num">10<span>+</span></div>
-    <div class="metric-desc">SKUs analyzed across e-commerce categories with SKU-level P&L tracking</div>
-  </div>
-  <div class="metric">
-    <div class="metric-num">13<span>mo</span></div>
-    <div class="metric-desc">Of financial data processed and visualized for trend analysis and decision support</div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<div class="divider" id="work">
-  <span class="divider-label">Selected work</span>
-  <div class="divider-line"></div>
+<div class="ticker">
+  <div class="t-item"><div class="t-num">5<span>yrs</span></div><div class="t-lbl">Professional experience in data analytics</div></div>
+  <div class="t-item"><div class="t-num">8<span>+</span></div><div class="t-lbl">Analytics projects across e-commerce & retail</div></div>
+  <div class="t-item"><div class="t-num">4<span>+</span></div><div class="t-lbl">Freelance & consulting engagements delivered</div></div>
+  <div class="t-item"><div class="t-num">5<span>+</span></div><div class="t-lbl">Industries served — retail, e-commerce, e-learning beauty, jewelry, energy</div></div>
 </div>
 
-<section class="projects">
-  <!-- PROJECT 1 -->
-  <div class="project">
-    <div class="proj-num">Project — 01</div>
-    <div class="proj-img">
-      <!-- REPLACE: thay thẻ img bên dưới bằng ảnh chụp dashboard thật của bạn -->
-      <!-- <img src="dashboard-pl.png" alt="P&L Dashboard" style="width:100%;height:100%;object-fit:cover;"> -->
-      <div class="mini-dash">
-        <div class="mini-bar">
-          <div class="mini-dot"></div><div class="mini-dot"></div><div class="mini-dot"></div>
-        </div>
-        <div class="mini-kpis">
-          <div class="mini-kpi"><div class="mini-kpi-l">Revenue</div><div class="mini-kpi-v">1.1B</div></div>
-          <div class="mini-kpi"><div class="mini-kpi-l">Cost</div><div class="mini-kpi-v">787M</div></div>
-          <div class="mini-kpi"><div class="mini-kpi-l">Profit</div><div class="mini-kpi-v">298M</div></div>
-          <div class="mini-kpi"><div class="mini-kpi-l">Margin</div><div class="mini-kpi-v">27%</div></div>
-        </div>
-        <div class="mini-chart">
-          <div class="mini-b bar-navy" style="height:40%"></div>
-          <div class="mini-b bar-navy" style="height:55%"></div>
-          <div class="mini-b bar-navy" style="height:50%"></div>
-          <div class="mini-b bar-navy" style="height:65%"></div>
-          <div class="mini-b bar-navy" style="height:48%"></div>
-          <div class="mini-b bar-navy" style="height:70%"></div>
-          <div class="mini-b" style="height:52%;background:var(--navy-light)"></div>
-          <div class="mini-b" style="height:45%;background:var(--navy-light)"></div>
-        </div>
-      </div>
+<div class="projects">
+  <div class="proj">
+    <div class="proj-eye">
+      <span class="proj-num">Project — 01</span>
+      <span class="proj-cat">Financial Analytics</span>
     </div>
-    <div class="proj-category">E-commerce · Financial Analytics</div>
+    <div class="ss" id="ss1">
+      <div class="ss-track" id="st1">
+        <img src="pl-dashboard.png" alt="P&L Overview">
+        <img src="expenses-dashboard.png" alt="Expenses">
+        <img src="product-dashboard.png" alt="Product">
+      </div>
+      <button class="ss-btn ss-prev" onclick="slide('ss1',-1)">&#8249;</button>
+      <button class="ss-btn ss-next" onclick="slide('ss1',1)">&#8250;</button>
+      <div class="ss-dots">
+        <div class="ss-dot" id="ss1-d0" style="opacity:1"></div>
+        <div class="ss-dot" id="ss1-d1" style="opacity:.35"></div>
+        <div class="ss-dot" id="ss1-d2" style="opacity:.35"></div>
+      </div>
+      <div class="ss-lbl" id="ss1-lbl">P&amp;L Overview</div>
+    </div>
     <h2 class="proj-title">Profit & Loss Analytics Dashboard</h2>
-    <p class="proj-desc">Automated P&L reporting for an e-commerce seller managing 10 SKUs across 4 product categories. Connected Google Sheets to Looker Studio for real-time monitoring with MoM and YoY comparison. Identified that high-growth SKUs were losing margin due to subsidy over-reliance.</p>
-    <a href="https://lookerstudio.google.com/reporting/0c1b8da1-6b5b-4d7e-9b7d-23198b2483df" target="_blank" class="proj-link">
-      View live dashboard
-      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-    </a>
+    <p class="proj-desc">Automated 3-page P&L reporting system for an e-commerce seller — covering financial overview, expense breakdown, and SKU-level product performance. Connected Google Sheets to Looker Studio with 13 months of data, dynamic date filters, and color-coded alerts.</p>
+    <div class="findings">
+      <div class="f-lbl">Key findings</div>
+      <div>— Revenue grew <strong>9.6% YoY</strong> but Net Profit Margin compressed from 35% → <strong>27.4%</strong>. Expenses rising faster than revenue.</div>
+      <div>— <strong>Shop Subsidy</strong> accounts for ~39% of revenue and 98% of variable expenses — critical concentration risk.</div>
+      <div>— <strong>SKU 4</strong>: highest revenue (20.4M), lowest COGS (19.4%), profit +27.3% MoM. Top candidate for scaling.</div>
+      <div>— <strong>SKU 9 & 10</strong> growth trap: revenue up 99.5% & 41.9% but net profit down -41.5% & -60.1%.</div>
+      <div class="f-rec">→ Reallocate subsidy from SKU 9/10 to SKU 4 to recover portfolio margin.</div>
+    </div>
+    <a href="https://lookerstudio.google.com/reporting/0c1b8da1-6b5b-4d7e-9b7d-23198b2483df/page/sm9oE" target="_blank" class="proj-link">View live dashboard <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
     <div class="proj-meta">
-      <div class="meta-item"><span class="meta-val">Looker Studio</span><span class="meta-lbl">Visualization</span></div>
-      <div class="meta-item"><span class="meta-val">Google Sheets</span><span class="meta-lbl">Data source</span></div>
-      <div class="meta-item"><span class="meta-val">13 months</span><span class="meta-lbl">Data range</span></div>
+      <div><span class="m-val">Looker Studio</span><span class="m-lbl">Visualization</span></div>
+      <div><span class="m-val">Google Sheets</span><span class="m-lbl">Data source</span></div>
+      <div><span class="m-val">13 months</span><span class="m-lbl">Data range</span></div>
+      <div><span class="m-val">10 SKUs</span><span class="m-lbl">Products</span></div>
     </div>
   </div>
 
-  <!-- PROJECT 2 -->
-  <div class="project">
-    <div class="proj-num">Project — 02</div>
-    <div class="proj-img">
-      <!-- REPLACE: thay thẻ img bên dưới bằng ảnh chụp Power BI dashboard thật của bạn -->
-      <!-- <img src="dashboard-rfm.png" alt="RFM Dashboard" style="width:100%;height:100%;object-fit:cover;"> -->
-      <div class="rfm-grid">
-        <div class="rfm-seg rfm-1">Champions<div class="rfm-sub">Recent · Frequent · High spend</div></div>
-        <div class="rfm-seg rfm-2">Loyal<div class="rfm-sub">Consistent buyers</div></div>
-        <div class="rfm-seg rfm-3">At Risk<div class="rfm-sub">Declining activity</div></div>
-        <div class="rfm-seg rfm-4">Lost<div class="rfm-sub">No recent purchase</div></div>
-      </div>
+  <div class="proj">
+    <div class="proj-eye">
+      <span class="proj-num">Project — 02</span>
+      <span class="proj-cat">Customer Analytics</span>
     </div>
-    <div class="proj-category">E-commerce · Customer Analytics</div>
+    <div class="ss" id="ss2">
+      <img src="rfm-dashboard.png" alt="RFM Dashboard" class="ss-single">
+    </div>
     <h2 class="proj-title">Customer Insight — RFM Segmentation</h2>
-    <p class="proj-desc">Customer segmentation using the RFM model (Recency, Frequency, Monetary) to identify Champions, Loyal, At-Risk, and Lost customers. Built with Power Query for data transformation and Power BI for interactive visualization, enabling targeted marketing decisions.</p>
-    <a href="#" class="proj-link">
-      View live dashboard
-      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
-    </a>
+    <p class="proj-desc">Customer segmentation using the RFM model (Recency, Frequency, Monetary) across 510K active customers. Built with Power Query for data transformation and Power BI for interactive visualization — enabling targeted retention and marketing decisions.</p>
+    <div class="findings">
+      <div class="f-lbl">Key findings</div>
+      <div>— <strong>510K active customers</strong> across 651bn net revenue with 2M total transactions.</div>
+      <div>— <strong>85.9% of customers are Lost</strong> (438K) — highest urgency segment for winback campaigns.</div>
+      <div>— <strong>At Risk group (13.35%, 68K)</strong> is the highest-priority recovery opportunity — still reachable.</div>
+      <div>— Online leads with 255K customers (50%), Offline 153K, Hybrid 102K.</div>
+      <div>— <strong>Gold tier</strong> (76K customers) shows highest avg transaction value — prioritize retention.</div>
+      <div class="f-rec">→ Launch targeted re-engagement for At Risk before they move to Lost.</div>
+    </div>
     <div class="proj-meta">
-      <div class="meta-item"><span class="meta-val">Power BI</span><span class="meta-lbl">Visualization</span></div>
-      <div class="meta-item"><span class="meta-val">Power Query</span><span class="meta-lbl">Data prep</span></div>
-      <div class="meta-item"><span class="meta-val">RFM Model</span><span class="meta-lbl">Methodology</span></div>
+      <div><span class="m-val">Power BI</span><span class="m-lbl">Visualization</span></div>
+      <div><span class="m-val">Power Query</span><span class="m-lbl">Data prep</span></div>
+      <div><span class="m-val">RFM Model</span><span class="m-lbl">Methodology</span></div>
+      <div><span class="m-val">510K</span><span class="m-lbl">Customers</span></div>
     </div>
   </div>
-</section>
-
-<!-- SKILLS -->
-<div class="divider">
-  <span class="divider-label">Skills & tools</span>
-  <div class="divider-line"></div>
 </div>
 
-<section class="skills">
-  <div class="skill">
-    <div class="skill-name">Looker Studio</div>
-    <div class="skill-cat">Reporting</div>
-    <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Power BI</div>
-    <div class="skill-cat">Visualization</div>
-    <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Power Query</div>
-    <div class="skill-cat">Data preparation</div>
-    <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Google Sheets</div>
-    <div class="skill-cat">Data management</div>
-    <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">SQL</div>
-    <div class="skill-cat">Querying</div>
-    <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<div class="divider" id="about">
-  <span class="divider-label">About</span>
-  <div class="divider-line"></div>
+<div class="s-head">
+  <span class="s-head-lbl">Projects</span>
+  <div class="s-head-line"></div>
+  <span class="s-head-num">08 total</span>
+</div>
+<div class="proj-list">
+  <div class="pl-item"><span class="pl-num">01</span><span class="pl-name">Digital Performance</span></div>
+  <div class="pl-item"><span class="pl-num">02</span><span class="pl-name">Sales Performance</span></div>
+  <div class="pl-item"><span class="pl-num">03</span><span class="pl-name">Retail Chain Store Insight</span></div>
+  <div class="pl-item hi"><span class="pl-num">04</span><span class="pl-name">Profit & Loss ★</span></div>
+  <div class="pl-item"><span class="pl-num">05</span><span class="pl-name">Gross Profit Analysis</span></div>
+  <div class="pl-item hi"><span class="pl-num">06</span><span class="pl-name">Customer Segment ★</span></div>
+  <div class="pl-item"><span class="pl-num">07</span><span class="pl-name">Store Space Management</span></div>
+  <div class="pl-item"><span class="pl-num">08</span><span class="pl-name">Optimal Inventory</span></div>
 </div>
 
-<section class="about">
-  <div class="about-left">
-    <h2 class="about-heading">Data analyst. <em>Problem solver.</em> E-commerce specialist.</h2>
-    <p class="about-sub">I help e-commerce businesses understand their numbers — from revenue trends to customer behavior — so they can make faster, smarter decisions.</p>
-  </div>
-  <div class="about-right">
-    <div class="about-item">
-      <div class="about-item-label">Specialization</div>
-      <div class="about-item-val">E-commerce analytics, financial reporting, customer segmentation</div>
-    </div>
-    <div class="about-item">
-      <div class="about-item-label">Location</div>
-      <div class="about-item-val">Ho Chi Minh City, Vietnam<br>Open to remote & international clients</div>
-    </div>
-    <div class="about-item">
-      <div class="about-item-label">Languages</div>
-      <div class="about-item-val">Vietnamese (native)<br>English (professional)</div>
-    </div>
-    <div class="about-item">
-      <div class="about-item-label">Contact</div>
-      <div class="about-item-val"><a href="mailto:your@email.com" style="color:var(--accent);text-decoration:none;">your@email.com</a><br>
-      <a href="https://linkedin.com/in/yourprofile" style="color:var(--accent);text-decoration:none;">LinkedIn ↗</a></div>
-    </div>
-  </div>
-</section>
+<div class="s-head" id="experience">
+  <span class="s-head-lbl">Work experience</span>
+  <div class="s-head-line"></div>
+  <span class="s-head-num"> 2020 — Present</span>
+</div>
+<div class="exp-wrap">
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-left">© 2025 Ny Huynh · <a href="mailto:your@email.com">your@email.com</a></div>
-  <div class="footer-right">
-    <a href="https://linkedin.com/in/yourprofile" class="footer-link">LinkedIn</a>
-    <a href="https://lookerstudio.google.com/reporting/0c1b8da1-6b5b-4d7e-9b7d-23198b2483df" target="_blank" class="footer-link">Looker Studio</a>
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">Mar 2023 — Present</div>
+      <div class="exp-co">VTA Company</div>
+      <div class="exp-loc">HCM · Full-time</div>
+    </div>
+    <div>
+      <div class="exp-dept">Data Science Department</div>
+      <div class="exp-title">Business Intelligence Analyst</div>
+      <ul class="exp-ul">
+        <li>Led the design and development of interactive dashboards using Power BI to track key business KPIs across departments.</li>
+        <li>Defined and standardized business metrics, improving data consistency and alignment across product, marketing, and operations teams.</li>
+        <li>Analyzed large-scale datasets to identify trends, driving data-backed decisions that improved operational efficiency.</li>
+        <li>Presented insights and strategic recommendations to senior stakeholders, influencing key business decisions.</li>
+        <li>Collaborated cross-functionally to ensure data accuracy, integrity, and alignment with business objectives.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">Jan 2021 — Feb 2023</div>
+      <div class="exp-co">VTA Company</div>
+      <div class="exp-loc">HCM · Full-time</div>
+    </div>
+    <div>
+      <div class="exp-dept">IT Department</div>
+      <div class="exp-title">Analytics Engineer</div>
+      <ul class="exp-ul">
+        <li>Built and maintained ETL pipelines using Azure Data Factory, integrating data into SQL Server and Azure Synapse Analytics.</li>
+        <li>Designed and implemented scalable data models (star schema) to support reporting and analytics.</li>
+        <li>Optimized complex SQL queries, significantly improving data processing performance.</li>
+        <li>Developed and maintained business dashboards in Power BI for internal stakeholders.</li>
+        <li>Worked closely with business teams to translate requirements into reliable data solutions.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">Aug 2020 — Dec 2020</div>
+      <div class="exp-co">VTA Company</div>
+      <div class="exp-loc">HCM · Full-time</div>
+    </div>
+    <div>
+      <div class="exp-dept">E-commerce Department</div>
+      <div class="exp-title">Data Analyst</div>
+      <ul class="exp-ul">
+        <li>Developed dashboards and reports using Looker Studio to monitor customer behavior and sales performance.</li>
+        <li>Processed and analyzed large datasets using Google Cloud tools (BigQuery, Dataflow).</li>
+        <li>Conducted A/B testing and cohort analysis to improve customer engagement and conversion rates.</li>
+        <li>Collaborated with marketing and product teams to deliver actionable insights.</li>
+        <li>Wrote and optimized SQL queries to support data extraction and transformation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">Oct 2024 — Oct 2025</div>
+      <div class="exp-co">Ecotricity company</div>
+      <div class="exp-loc">New Zealand · Freelance</div>
+    </div>
+    <div>
+      <div class="exp-dept">Pricing Department</div>
+      <div class="exp-title">Power BI Specialist</div>
+      <ul class="exp-ul">
+        <li>Designed and delivered end-to-end BI solutions using Power BI, integrating multiple data sources.</li>
+        <li>Built optimized dashboards tailored to business requirements, improving reporting efficiency and usability.</li>
+        <li>Enhanced report performance through data modeling and DAX optimization.</li>
+        <li>Provided consulting and training to stakeholders on data analysis and reporting best practices.</li>
+        <li>Managed project communication and progress updates with international clients.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="s-head" id="consulting">
+  <span class="s-head-lbl">Consulting & side projects</span>
+  <div class="s-head-line"></div>
+  <span class="s-head-num">05 engagements</span>
+</div>
+
+<div class="exp-wrap">
+
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">Freelance</div>
+      <div class="exp-co">Beauty company</div>
+      <div class="exp-loc">Confidential Client</div>
+    </div>
+    <div>
+      <ul class="exp-ul">
+        <li>Designed dashboards using Looker Studio to track service performance and customer segmentation across locations.</li>
+        <li>Analyzed service performance and campaign effectiveness, providing insights to support marketing decisions.</li>
+      </ul>
+      <div class="exp-dept">Big Query</div>  <div class="exp-dept">Looker Studio</div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">Freelance</div>
+      <div class="exp-co">Jewelry company</div>
+      <div class="exp-loc">Operations Analytics</div>
+    </div>
+    <div>
+      <ul class="exp-ul">
+        <li>Built operational reports to monitor store performance and sales metrics across retail locations.</li>
+        <li>Improved visibility of key KPIs, enabling better decision-making for the operations team.</li>
+      </ul>
+      <div>
+      <div class="exp-dept">Excel</div>
+      <div class="exp-dept">Power BI</div>
+      <div class="exp-dept">Power Query</div>
+      <div class="exp-dept">DAX Function</div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">Corporate Training</div>
+      <div class="exp-co">E-learning Company</div>
+      <div class="exp-loc">Internal Training</div>
+    </div>
+    <div>
+      <ul class="exp-ul">
+        <li>Delivered training sessions on Google Sheets, Looker Studio, and data analysis for business users within the company.</li>
+        <li>Developed training materials and hands-on exercises to improve data literacy and practical skills across teams.</li>
+      </ul>
+      <div>
+      <div class="exp-dept">Google Sheet</div>
+      <div class="exp-dept">Looker Studio</div>
+      <div>
+      <div class="exp-dept">Business Understanding</div>
+      <div class="exp-dept">Data Collection</div>
+      <div class="exp-dept">Data Cleaning & Preparation</div>
+      <div class="exp-dept">Data Exploration</div>
+      <div class="exp-dept">Data Modeling</div>
+      <div class="exp-dept">Data Analysis</div>
+      <div class="exp-dept">Data Visualization</div>
+      <div class="exp-dept">Insight & Recommendation</div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <div class="exp-period">Instructor</div>
+      <div class="exp-co">A1 Demy company</div>
+      <div class="exp-loc">Education</div>
+    </div>
+    <div>
+      <div class="exp-title">Data Analysis & BI Instructor</div>
+      <ul class="exp-ul">
+        <li>Taught foundational data analysis and BI concepts to learners at A1 Demy.</li>
+        <li>Guided students through real-world case studies and end-to-end dashboard development projects.</li>
+      </ul>
+      <div>
+      <div class="exp-dept">Business Understanding</div>
+      <div class="exp-dept">Data Collection</div>
+      <div class="exp-dept">Data Cleaning & Preparation</div>
+      <div class="exp-dept">Data Exploration</div>
+      <div class="exp-dept">Data Modeling</div>
+      <div class="exp-dept">Data Analysis</div>
+      <div class="exp-dept">Data Visualization</div>
+      <div class="exp-dept">Insight & Recommendation</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="s-head" id="skills">
+  <span class="s-head-lbl">Skills & tools</span>
+  <div class="s-head-line"></div>
+</div>
+<div class="skills">
+  <div class="sk-group"><div class="sk-lbl">Visualization</div><div class="sk-tags"><span class="sk-tag">Looker Studio</span><span class="sk-tag">Power BI</span></div></div>
+  <div class="sk-group"><div class="sk-lbl">Data Modeling</div><div class="sk-tags"><span class="sk-tag">Visual Studio</span><span class="sk-tag">Tabular Editor 3</span></div></div>
+  <div class="sk-group"><div class="sk-lbl">Big Data</div><div class="sk-tags"><span class="sk-tag">Databricks</span><span class="sk-tag">BigQuery</span><span class="sk-tag">Snowflake</span></div></div>
+  <div class="sk-group"><div class="sk-lbl">Databases</div><div class="sk-tags"><span class="sk-tag">SQL Server</span><span class="sk-tag">MySQL</span><span class="sk-tag">PostgreSQL</span></div></div>
+  <div class="sk-group"><div class="sk-lbl">ETL Tools</div><div class="sk-tags"><span class="sk-tag">Azure Data Factory</span><span class="sk-tag">Google Dataflow</span><span class="sk-tag">SSIS</span></div></div>
+  <div class="sk-group"><div class="sk-lbl">Other</div><div class="sk-tags"><span class="sk-tag">Excel</span><span class="sk-tag">Google Sheets</span><span class="sk-tag">Power Query</span><span class="sk-tag">Azure Synapse</span></div></div>
+</div>
+
+<footer id="contact">
+  <div>
+    <div class="ft-lbl">Contact</div>
+    <div class="ft-val">
+      <a href="/cdn-cgi/l/email-protection#90fee9bef8e5e9fef8a1a0a1a0d0f7fdf1f9fcbef3fffd"><span class="__cf_email__" data-cfemail="93fdeabdfbe6eafdfba2a3a2a3d3f4fef2faffbdf0fcfe">ny.huynh1010@gmail.com</span></a><br>
+      0976 797 380<br>
+      171 Tôn Đản, Ward 15, District 4<br>
+      Ho Chi Minh City 700000, Vietnam
+    </div>
+  </div>
+  <div>
+    <div class="ft-lbl">Specialization</div>
+    <div class="ft-val">Business Intelligence & Data Analytics<br>Dashboard Design · ETL Engineering<br>Data Training & Consulting</div>
+  </div>
+  <div>
+    <div class="ft-lbl">Open for</div>
+    <div class="ft-val">Freelance data projects<br>Dashboard & reporting consulting<br>International remote work</div>
   </div>
 </footer>
+<div class="ft-bottom">
+  <span class="ft-copy">© 2025 Ny Huynh · Open to freelance & remote opportunities. Available upon request.</span>
 
-</body>
-</html>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/ema

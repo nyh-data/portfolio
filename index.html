@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ny Huynh — Data Analyst</title>
+<title>Ny Huynh — BI Analyst & Data Consultant</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
@@ -24,7 +24,9 @@ body{font-family:var(--sans);background:var(--white);color:var(--g900);font-size
 /* NAV */
 nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 48px;height:52px;border-bottom:1px solid var(--g100);position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);z-index:100;}
 .nav-left{display:flex;gap:24px;}
-.nav-center{font-family:var(--serif);font-size:16px;color:var(--g900);text-align:center;}
+.nav-center{font-family:var(--serif);font-size:18px;color:var(--g900);text-align:center;letter-spacing:-.01em;}
+.nav-ny{color:var(--teal);font-style:italic;}
+.nav-dot{color:var(--gold);font-size:22px;line-height:1;vertical-align:middle;margin-left:1px;}
 .nav-right{display:flex;gap:24px;justify-content:flex-end;align-items:center;}
 .nav-link{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);text-decoration:none;transition:color .2s;}
 .nav-link:hover{color:var(--g900);}
@@ -32,7 +34,7 @@ nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0
 .nav-cta:hover{background:var(--g900);}
 
 /* MASTHEAD */
-.masthead{border-bottom:1px solid var(--g100);padding:64px 48px 48px;display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:start;}
+.masthead{border-bottom:1px solid var(--g100);padding:64px 48px 48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
 .kicker{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
 .kicker::before{content:'';width:32px;height:1px;background:var(--gold);}
 .headline{font-family:var(--serif);font-size:52px;line-height:1.05;letter-spacing:-.01em;color:var(--g900);margin-bottom:24px;}
@@ -44,19 +46,12 @@ nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0
 .avail-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:blink 2s ease-in-out infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* PROFILE CARD */
-.profile-card{border:1px solid var(--g100);padding:28px;background:var(--g50);}
-.p-init{width:52px;height:52px;border-radius:50%;background:var(--teal);color:white;font-family:var(--serif);font-size:20px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-.p-name{font-family:var(--serif);font-size:19px;margin-bottom:4px;}
-.p-role{font-size:11px;color:var(--teal);font-family:var(--mono);letter-spacing:.05em;margin-bottom:16px;}
-.p-div{height:1px;background:var(--g100);margin:16px 0;}
-.p-row{display:flex;gap:10px;margin-bottom:9px;font-size:12px;}
-.p-lbl{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--g300);min-width:62px;padding-top:2px;}
-.p-val{color:var(--g700);line-height:1.5;}
-.p-val a{color:var(--teal);text-decoration:none;}
+/* DATA PIPELINE ANIMATION */
+.pipeline-wrap{border:1px solid var(--g100);background:var(--g50);overflow:hidden;position:relative;width:100%;min-height:420px;}
+.pipeline-wrap canvas{display:block;width:100%;height:100%;}
 
 /* TICKER */
-.ticker{border-bottom:1px solid var(--g100);display:grid;grid-template-columns:repeat(4,1fr);background:var(--g50);}
+.ticker{border-top:2px solid var(--gold);border-bottom:1px solid var(--g100);display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);}
 .t-item{padding:24px 32px;border-right:1px solid var(--g100);}
 .t-item:last-child{border-right:none;}
 .t-num{font-family:var(--serif);font-size:36px;color:var(--gold);line-height:1;margin-bottom:6px;}
@@ -79,7 +74,7 @@ nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0
 .proj-cat{font-size:10px;font-weight:500;color:var(--teal);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;}
 
 /* SLIDESHOW */
-.ss{width:100%;height:200px;border:1px solid var(--g100);overflow:hidden;position:relative;margin-bottom:20px;background:var(--g50);}
+.ss{width:100%;height:420px;border:1px solid var(--g100);overflow:hidden;position:relative;margin-bottom:20px;background:var(--g50);}
 .ss-track{display:flex;width:300%;height:100%;transition:transform .4s ease;}
 .ss-track img{width:33.333%;height:100%;object-fit:cover;object-position:top;flex-shrink:0;}
 .ss-single{width:100%;height:100%;object-fit:cover;object-position:top;}
@@ -129,13 +124,13 @@ nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0
 .exp-ul li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:12px;}
 
 /* SKILLS */
-.skills{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--g100);}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--g100);background:var(--white);}
 .sk-group{padding:28px 36px;border-right:1px solid var(--g100);}
 .sk-group:last-child,.sk-group:nth-child(3){border-right:none;}
 .sk-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .sk-lbl::after{content:'';flex:1;height:1px;background:var(--gold-light);}
 .sk-tags{display:flex;flex-wrap:wrap;gap:6px;}
-.sk-tag{font-size:11px;font-family:var(--mono);padding:4px 10px;background:var(--white);border:1px solid var(--g100);color:var(--g700);transition:background .15s,border-color .15s;}
+.sk-tag{font-size:11px;font-family:var(--mono);padding:4px 10px;background:var(--g50);border:1px solid var(--g100);color:var(--g700);transition:background .15s,border-color .15s;}
 .sk-tag:hover{background:var(--gold-light);border-color:var(--gold);}
 
 /* FOOTER */
@@ -146,26 +141,54 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
 .ft-bottom{padding:16px 48px;border-top:1px solid var(--g100);display:flex;justify-content:space-between;}
 .ft-copy{font-size:11px;color:var(--g300);font-family:var(--mono);}
 
-/* RESPONSIVE */
-@media(max-width:960px){
-  nav{padding:0 24px;grid-template-columns:1fr auto;}
+/* RESPONSIVE — LAPTOP (max 1200px) */
+@media(max-width:1200px){
+  .masthead{padding:48px 32px 40px;gap:40px;}
+  .headline{font-size:44px;}
+  .proj{padding:32px 32px;}
+  .exp-wrap{padding:0 32px;}
+  .proj-list{padding:0 32px;}
+  .s-head{padding:12px 32px;}
+  nav{padding:0 32px;}
+  footer{padding:32px 32px;}
+  .ft-bottom{padding:16px 32px;}
+}
+
+/* RESPONSIVE — TABLET & PHONE (max 768px) */
+@media(max-width:768px){
+  nav{padding:0 16px;grid-template-columns:1fr auto;}
   .nav-left{display:none;}
-  .masthead{grid-template-columns:1fr;padding:40px 24px;gap:32px;}
-  .headline{font-size:36px;}
-  .profile-card{display:none;}
+  .nav-center{font-size:14px;}
+  .masthead{grid-template-columns:1fr;padding:32px 16px;gap:24px;}
+  .pipeline-wrap{min-height:280px;}
+  .headline{font-size:32px;line-height:1.1;}
+  .subhead{font-size:13px;}
+  .kicker{font-size:9px;}
   .ticker{grid-template-columns:1fr 1fr;}
+  .t-item{padding:16px 20px;}
   .t-item:nth-child(2){border-right:none;}
-  .t-item:nth-child(3){border-top:1px solid rgba(255,255,255,.08);}
+  .t-item:nth-child(3){border-top:1px solid var(--g100);}
+  .t-num{font-size:28px;}
   .projects{grid-template-columns:1fr;}
-  .proj{border-right:none;padding:32px 24px;}
-  .s-head{padding:12px 24px;}
-  .exp-wrap{padding:0 24px;}
-  .exp-item{grid-template-columns:1fr;gap:12px;}
-  .skills{grid-template-columns:1fr 1fr;}
-  .sk-group:nth-child(2n){border-right:none;}
+  .proj{border-right:none;padding:24px 16px;}
+  .ss{height:260px;}
+  .s-head{padding:10px 16px;}
   .proj-list{padding:0;grid-template-columns:1fr 1fr;}
-  footer{grid-template-columns:1fr;padding:24px;}
-  .ft-bottom{padding:16px 24px;}
+  .pl-item{padding:14px 16px;}
+  .pl-item:nth-child(3n){border-right:1px solid var(--g100);}
+  .pl-item:nth-child(2n){border-right:none;}
+  .exp-wrap{padding:0 16px;}
+  .exp-item{grid-template-columns:1fr;gap:8px;padding:24px 0;}
+  .exp-period{font-size:9px;}
+  .exp-title{font-size:16px;}
+  .skills{grid-template-columns:1fr 1fr;}
+  .sk-group{padding:20px 16px;border-right:1px solid rgba(255,255,255,.08);}
+  .sk-group:nth-child(2n){border-right:none;}
+  .sk-group:nth-child(3){border-right:1px solid rgba(255,255,255,.08);}
+  footer{grid-template-columns:1fr;padding:24px 16px;gap:20px;}
+  .ft-bottom{padding:14px 16px;flex-direction:column;gap:4px;}
+  .proj-meta{flex-wrap:wrap;gap:12px;}
+  .findings{font-size:11px;}
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .kicker{animation:fadeUp .4s ease both .05s}
@@ -184,10 +207,12 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
     <a href="#consulting" class="nav-link">Consulting</a>
     <a href="#skills" class="nav-link">Skills</a>
   </div>
-  <div class="nav-center">Ny Huynh</div>
+  <div class="nav-center">
+    <span style="font-family:var(--serif);font-size:18px;color:var(--g900);letter-spacing:-.01em;"><span class="nav-ny">Ny</span> Huynh<span class="nav-dot">.</span></span><span style="font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--g300);margin-left:10px;vertical-align:middle;">Vietnam</span>
+  </div>
   <div class="nav-right">
     <a href="#contact" class="nav-link">Contact</a>
-    <a href="/cdn-cgi/l/email-protection#d5bbacfbbda0acbbbde4e5e4e595b2b8b4bcb9fbb6bab8" class="nav-cta">Hire me</a>
+    <a href="mailto:ny.huynh1010@gmail.com" class="nav-cta">Get in touch</a>
   </div>
 </nav>
 
@@ -204,20 +229,12 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
       <span class="pill">Azure Data Factory</span>
       <span class="pill">Tabular Editor 3</span>
       <span class="pill">Google Dataflow</span>
-      <span class="pill">SSIS</span>
+      <span class="pill">dbt</span>
     </div>
     <div class="avail"><span class="avail-dot"></span>Available for freelance, consulting, and remote opportunities in BI, data analytics, and AI-driven solutions.</div>
   </div>
-  <div class="profile-card">
-    <div class="p-init">NH</div>
-    <div class="p-name">Ny Huynh</div>
-    <div class="p-role">BI Analyst · VTA · Freelance NZ</div>
-    <div class="p-div"></div>
-    <div class="p-row"><span class="p-lbl">Email</span><span class="p-val"><a href="/cdn-cgi/l/email-protection#9bf5e2b5f3eee2f5f3aaabaaabdbfcf6faf2f7b5f8f4f6"><span class="__cf_email__" data-cfemail="cfa1b6e1a7bab6a1a7fefffeff8fa8a2aea6a3e1aca0a2">[email&#160;protected]</span></a></span></div>
-    <div class="p-row"><span class="p-lbl">Phone</span><span class="p-val">0976 797 380</span></div>
-    <div class="p-row"><span class="p-lbl">Location</span><span class="p-val">171 Tôn Đản, Ward 15, District 4, HCM</span></div>
-    <div class="p-row"><span class="p-lbl">Experience</span><span class="p-val">5 years · Data Analytics</span></div>
-    <div class="p-row"><span class="p-lbl">Available</span><span class="p-val" style="color:var(--teal)">Freelance / Remote</span></div>
+  <div class="pipeline-wrap" style="width:100%;min-height:360px;">
+    <canvas id="pipeline-canvas"></canvas>
   </div>
 </section>
 
@@ -225,7 +242,23 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="t-item"><div class="t-num">5<span>yrs</span></div><div class="t-lbl">Professional experience in data analytics</div></div>
   <div class="t-item"><div class="t-num">8<span>+</span></div><div class="t-lbl">Analytics projects across e-commerce & retail</div></div>
   <div class="t-item"><div class="t-num">4<span>+</span></div><div class="t-lbl">Freelance & consulting engagements delivered</div></div>
-  <div class="t-item"><div class="t-num">5<span>+</span></div><div class="t-lbl">Industries served — retail, e-commerce, e-learning beauty, jewelry, energy</div></div>
+  <div class="t-item"><div class="t-num">5<span>+</span></div><div class="t-lbl">Industries served — retail, e-commerce, e-learning, beauty, jewelry, energy</div></div>
+</div>
+
+<div class="s-head" id="work">
+  <span class="s-head-lbl">Projects</span>
+  <div class="s-head-line"></div>
+  <span class="s-head-num">08 total</span>
+</div>
+<div class="proj-list">
+  <div class="pl-item"><span class="pl-num">01</span><span class="pl-name">Digital Performance</span></div>
+  <div class="pl-item"><span class="pl-num">02</span><span class="pl-name">Sales Performance</span></div>
+  <div class="pl-item"><span class="pl-num">03</span><span class="pl-name">Retail Chain Store Insight</span></div>
+  <div class="pl-item hi"><span class="pl-num">04</span><span class="pl-name">Profit & Loss ★</span></div>
+  <div class="pl-item"><span class="pl-num">05</span><span class="pl-name">Gross Profit Analysis</span></div>
+  <div class="pl-item hi"><span class="pl-num">06</span><span class="pl-name">Customer Segment ★</span></div>
+  <div class="pl-item"><span class="pl-num">07</span><span class="pl-name">Store Space Management</span></div>
+  <div class="pl-item"><span class="pl-num">08</span><span class="pl-name">Optimal Inventory</span></div>
 </div>
 
 <div class="projects">
@@ -277,7 +310,7 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
       <img src="rfm-dashboard.png" alt="RFM Dashboard" class="ss-single">
     </div>
     <h2 class="proj-title">Customer Insight — RFM Segmentation</h2>
-    <p class="proj-desc">Customer segmentation using the RFM model (Recency, Frequency, Monetary) across 510K active customers. Built with Power Query for data transformation and Power BI for interactive visualization — enabling targeted retention and marketing decisions.</p>
+    <p class="proj-desc">Customer segmentation using the RFM model (Recency, Frequency, Monetary) across 510K active customers. Built with dbt on Databricks for data transformation and Power BI for interactive visualization — enabling targeted retention and marketing decisions.</p>
     <div class="findings">
       <div class="f-lbl">Key findings</div>
       <div>— <strong>510K active customers</strong> across 651bn net revenue with 2M total transactions.</div>
@@ -289,27 +322,11 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
     </div>
     <div class="proj-meta">
       <div><span class="m-val">Power BI</span><span class="m-lbl">Visualization</span></div>
-      <div><span class="m-val">Power Query</span><span class="m-lbl">Data prep</span></div>
+      <div><span class="m-val">dbt</span><span class="m-lbl">Data prep</span></div>
       <div><span class="m-val">RFM Model</span><span class="m-lbl">Methodology</span></div>
       <div><span class="m-val">510K</span><span class="m-lbl">Customers</span></div>
     </div>
   </div>
-</div>
-
-<div class="s-head">
-  <span class="s-head-lbl">Projects</span>
-  <div class="s-head-line"></div>
-  <span class="s-head-num">08 total</span>
-</div>
-<div class="proj-list">
-  <div class="pl-item"><span class="pl-num">01</span><span class="pl-name">Digital Performance</span></div>
-  <div class="pl-item"><span class="pl-num">02</span><span class="pl-name">Sales Performance</span></div>
-  <div class="pl-item"><span class="pl-num">03</span><span class="pl-name">Retail Chain Store Insight</span></div>
-  <div class="pl-item hi"><span class="pl-num">04</span><span class="pl-name">Profit & Loss ★</span></div>
-  <div class="pl-item"><span class="pl-num">05</span><span class="pl-name">Gross Profit Analysis</span></div>
-  <div class="pl-item hi"><span class="pl-num">06</span><span class="pl-name">Customer Segment ★</span></div>
-  <div class="pl-item"><span class="pl-num">07</span><span class="pl-name">Store Space Management</span></div>
-  <div class="pl-item"><span class="pl-num">08</span><span class="pl-name">Optimal Inventory</span></div>
 </div>
 
 <div class="s-head" id="experience">
@@ -379,7 +396,7 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="exp-item">
     <div>
       <div class="exp-period">Oct 2024 — Oct 2025</div>
-      <div class="exp-co">Ecotricity company</div>
+      <div class="exp-co">Ecotricity Company</div>
       <div class="exp-loc">New Zealand · Freelance</div>
     </div>
     <div>
@@ -408,34 +425,40 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="exp-item">
     <div>
       <div class="exp-period">Freelance</div>
-      <div class="exp-co">Beauty company</div>
+      <div class="exp-co">Beauty Company</div>
       <div class="exp-loc">Confidential Client</div>
     </div>
     <div>
-      <ul class="exp-ul">
+      <div class="exp-dept" style="margin-bottom:12px;">Analytics Reporting</div>
+      <ul class="exp-ul" style="margin-bottom:12px;">
         <li>Designed dashboards using Looker Studio to track service performance and customer segmentation across locations.</li>
         <li>Analyzed service performance and campaign effectiveness, providing insights to support marketing decisions.</li>
       </ul>
-      <div class="exp-dept">Big Query</div>  <div class="exp-dept">Looker Studio</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <div class="exp-dept">BigQuery</div>
+        <div class="exp-dept">Looker Studio</div>
+      </div>
     </div>
   </div>
 
   <div class="exp-item">
     <div>
       <div class="exp-period">Freelance</div>
-      <div class="exp-co">Jewelry company</div>
+      <div class="exp-co">Jewelry Company</div>
       <div class="exp-loc">Operations Analytics</div>
     </div>
     <div>
-      <ul class="exp-ul">
+      <div class="exp-dept" style="margin-bottom:12px;">Operations Dashboard</div>
+      <ul class="exp-ul" style="margin-bottom:12px;">
         <li>Built operational reports to monitor store performance and sales metrics across retail locations.</li>
         <li>Improved visibility of key KPIs, enabling better decision-making for the operations team.</li>
       </ul>
-      <div>
-      <div class="exp-dept">Excel</div>
-      <div class="exp-dept">Power BI</div>
-      <div class="exp-dept">Power Query</div>
-      <div class="exp-dept">DAX Function</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <div class="exp-dept">Excel</div>
+        <div class="exp-dept">Power BI</div>
+        <div class="exp-dept">Power Query</div>
+        <div class="exp-dept">DAX</div>
+      </div>
     </div>
   </div>
 
@@ -446,46 +469,31 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
       <div class="exp-loc">Internal Training</div>
     </div>
     <div>
-      <ul class="exp-ul">
+      <div class="exp-dept" style="margin-bottom:12px;">Data Training</div>
+      <ul class="exp-ul" style="margin-bottom:12px;">
         <li>Delivered training sessions on Google Sheets, Looker Studio, and data analysis for business users within the company.</li>
         <li>Developed training materials and hands-on exercises to improve data literacy and practical skills across teams.</li>
       </ul>
-      <div>
-      <div class="exp-dept">Google Sheet</div>
-      <div class="exp-dept">Looker Studio</div>
-      <div>
-      <div class="exp-dept">Business Understanding</div>
-      <div class="exp-dept">Data Collection</div>
-      <div class="exp-dept">Data Cleaning & Preparation</div>
-      <div class="exp-dept">Data Exploration</div>
-      <div class="exp-dept">Data Modeling</div>
-      <div class="exp-dept">Data Analysis</div>
-      <div class="exp-dept">Data Visualization</div>
-      <div class="exp-dept">Insight & Recommendation</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <div class="exp-dept">Google Sheets</div>
+        <div class="exp-dept">Looker Studio</div>
+      </div>
     </div>
   </div>
 
   <div class="exp-item">
     <div>
       <div class="exp-period">Instructor</div>
-      <div class="exp-co">A1 Demy company</div>
+      <div class="exp-co">A1 Demy</div>
       <div class="exp-loc">Education</div>
     </div>
     <div>
+      <div class="exp-dept" style="margin-bottom:12px;">Teaching</div>
       <div class="exp-title">Data Analysis & BI Instructor</div>
       <ul class="exp-ul">
         <li>Taught foundational data analysis and BI concepts to learners at A1 Demy.</li>
         <li>Guided students through real-world case studies and end-to-end dashboard development projects.</li>
       </ul>
-      <div>
-      <div class="exp-dept">Business Understanding</div>
-      <div class="exp-dept">Data Collection</div>
-      <div class="exp-dept">Data Cleaning & Preparation</div>
-      <div class="exp-dept">Data Exploration</div>
-      <div class="exp-dept">Data Modeling</div>
-      <div class="exp-dept">Data Analysis</div>
-      <div class="exp-dept">Data Visualization</div>
-      <div class="exp-dept">Insight & Recommendation</div>
     </div>
   </div>
 
@@ -500,7 +508,7 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="sk-group"><div class="sk-lbl">Data Modeling</div><div class="sk-tags"><span class="sk-tag">Visual Studio</span><span class="sk-tag">Tabular Editor 3</span></div></div>
   <div class="sk-group"><div class="sk-lbl">Big Data</div><div class="sk-tags"><span class="sk-tag">Databricks</span><span class="sk-tag">BigQuery</span><span class="sk-tag">Snowflake</span></div></div>
   <div class="sk-group"><div class="sk-lbl">Databases</div><div class="sk-tags"><span class="sk-tag">SQL Server</span><span class="sk-tag">MySQL</span><span class="sk-tag">PostgreSQL</span></div></div>
-  <div class="sk-group"><div class="sk-lbl">ETL Tools</div><div class="sk-tags"><span class="sk-tag">Azure Data Factory</span><span class="sk-tag">Google Dataflow</span><span class="sk-tag">SSIS</span></div></div>
+  <div class="sk-group"><div class="sk-lbl">ETL Tools</div><div class="sk-tags"><span class="sk-tag">Azure Data Factory</span><span class="sk-tag">Google Dataflow</span><span class="sk-tag">SSIS</span><span class="sk-tag">dbt</span></div></div>
   <div class="sk-group"><div class="sk-lbl">Other</div><div class="sk-tags"><span class="sk-tag">Excel</span><span class="sk-tag">Google Sheets</span><span class="sk-tag">Power Query</span><span class="sk-tag">Azure Synapse</span></div></div>
 </div>
 
@@ -508,7 +516,7 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div>
     <div class="ft-lbl">Contact</div>
     <div class="ft-val">
-      <a href="/cdn-cgi/l/email-protection#90fee9bef8e5e9fef8a1a0a1a0d0f7fdf1f9fcbef3fffd"><span class="__cf_email__" data-cfemail="93fdeabdfbe6eafdfba2a3a2a3d3f4fef2faffbdf0fcfe">ny.huynh1010@gmail.com</span></a><br>
+      <a href="mailto:ny.huynh1010@gmail.com">ny.huynh1010@gmail.com</a><br>
       0976 797 380<br>
       171 Tôn Đản, Ward 15, District 4<br>
       Ho Chi Minh City 700000, Vietnam
@@ -524,8 +532,229 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   </div>
 </footer>
 <div class="ft-bottom">
-  <span class="ft-copy">© 2025 Ny Huynh · Open to freelance & remote opportunities. Available upon request.</span>
-
+  <span class="ft-copy">© 2025 Ny Huynh · BI Analyst & Data Consultant</span>
+  <span class="ft-copy">Vietnam · Open to remote & international work</span>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/ema
+<script>
+var si={};
+var sl={ss1:['P&L Overview','Expenses','Product']};
+function slide(id,dir){
+  if(!si[id])si[id]=0;
+  var total=sl[id]?sl[id].length:1;
+  si[id]=(si[id]+dir+total)%total;
+  var idx=si[id];
+  var num=id.replace('ss','');
+  var tr=document.getElementById('st'+num);
+  if(tr)tr.style.transform='translateX(-'+(idx*33.333)+'%)';
+  for(var i=0;i<total;i++){var d=document.getElementById(id+'-d'+i);if(d)d.style.opacity=i===idx?'1':'.35';}
+  var l=document.getElementById(id+'-lbl');
+  if(l&&sl[id])l.textContent=sl[id][idx];
+}
+
+(function(){
+  var canvas=document.getElementById('pipeline-canvas');
+  if(!canvas)return;
+  var wrap=canvas.parentElement;
+  var DPR=window.devicePixelRatio||1;
+  var GOLD='#C9A84C',TEAL='#2A7F6F',GRAY='#6B6B67',LIGHT='#EFEDE8',PALE='#F7F5F0';
+  var TEAL_PALE='#EEF7F6',GOLD_PALE='#FDFAF3';
+  var DOT_COLOR='#2A7F6F'; /* all dots same teal color */
+
+  function setSize(){
+    var W=wrap.clientWidth;
+    var H=Math.max(420,Math.round(W*0.85));
+    wrap.style.minHeight=H+'px';
+    canvas.width=W*DPR;canvas.height=H*DPR;
+    canvas.style.width=W+'px';canvas.style.height=H+'px';
+    return{W:W,H:H};
+  }
+  var dim=setSize(),ctx=canvas.getContext('2d');
+  ctx.scale(DPR,DPR);
+  var W=dim.W,H=dim.H;
+  var anim=0,done=false;
+  var ANIM_DUR=4000;   /* ms to fully reveal diagram */
+  var DOT_DUR=3200;    /* ms for one dot cycle */
+  var lastT=null;
+
+  var sched=[0,0.14,0.29,0.46,0.62];
+  function la(i){return eased(Math.min(1,Math.max(0,(anim-sched[i])/0.13)));}
+
+  /* 3 particles: same phase, lane order swapped: 0=Excel/CSV, 1=SQL Server, 2=Google Sheets */
+  var parts=[
+    {lane:0,prog:0.0,speed:0.0032},
+    {lane:1,prog:0.0,speed:0.0032},
+    {lane:2,prog:0.0,speed:0.0032}
+  ];
+
+  function rr(c,x,y,w,h,r,fill,stroke){
+    c.beginPath();c.moveTo(x+r,y);c.lineTo(x+w-r,y);c.arcTo(x+w,y,x+w,y+r,r);
+    c.lineTo(x+w,y+h-r);c.arcTo(x+w,y+h,x+w-r,y+h,r);
+    c.lineTo(x+r,y+h);c.arcTo(x,y+h,x,y+h-r,r);
+    c.lineTo(x,y+r);c.arcTo(x,y,x+r,y,r);c.closePath();
+    if(fill){c.fillStyle=fill;c.fill();}
+    if(stroke){c.strokeStyle=stroke;c.lineWidth=1;c.stroke();}
+  }
+
+  /* Arrow that stops before text zone to avoid overlap */
+  function arrowLine(c,x1,y1,x2,y2,col,a,margin){
+    if(a<0.01)return;
+    var mg=margin||10;
+    var dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);
+    if(len<mg*2)return;
+    var ux=dx/len,uy=dy/len;
+    /* stop the line mg px before destination */
+    var ex=x2-ux*mg,ey=y2-uy*mg;
+    c.save();c.globalAlpha=a*0.55;c.strokeStyle=col;c.lineWidth=1.2;
+    c.setLineDash([4,4]);c.beginPath();c.moveTo(x1,y1);c.lineTo(ex,ey);c.stroke();
+    c.setLineDash([]);
+    /* arrowhead */
+    c.globalAlpha=a*0.7;c.fillStyle=col;
+    var ang=Math.atan2(ey-y1,ex-x1);
+    c.beginPath();c.moveTo(ex,ey);
+    c.lineTo(ex-8*Math.cos(ang-.4),ey-8*Math.sin(ang-.4));
+    c.lineTo(ex-8*Math.cos(ang+.4),ey-8*Math.sin(ang+.4));
+    c.closePath();c.fill();c.restore();
+  }
+
+  function txt(c,s,x,y,sz,col,a,mono){
+    c.save();c.globalAlpha=a;c.fillStyle=col;
+    c.font=sz+'px '+(mono?'"IBM Plex Mono",monospace':'"IBM Plex Sans",sans-serif');
+    c.textAlign='center';c.textBaseline='middle';c.fillText(s,x,y);c.restore();
+  }
+  function secLbl(c,s,y,a){
+    c.save();c.globalAlpha=a*0.45;c.fillStyle=GRAY;
+    c.font='8.5px "IBM Plex Mono",monospace';c.textAlign='center';c.textBaseline='middle';
+    c.fillText(s.toUpperCase(),W/2,y);c.restore();
+  }
+
+  function eased(v){return v<0.5?2*v*v:1-Math.pow(-2*v+2,2)/2;}
+
+  function draw(ts){
+    if(!lastT) lastT=ts;
+    var dt=Math.min(ts-lastT, 64); /* cap at 64ms to avoid jump after tab switch */
+    lastT=ts;
+
+    /* advance anim and dot progress using real time */
+    if(anim<1.05) anim+=dt/ANIM_DUR;
+    if(anim>1.05) anim=1.05;
+    parts.forEach(function(p){ p.prog=(p.prog+dt/DOT_DUR)%1; });
+
+    ctx.clearRect(0,0,W,H);
+    var PAD=W*0.04,NW=W*0.22,NH=H*0.075,GAP=(W-PAD*2-NW*3)/2;
+    var Ly={src:H*.12,etl:H*.29,wh:H*.47,mod:H*.64,viz:H*.82};
+    function nx(i){return PAD+i*(NW+GAP)+NW/2;}
+    var a0=la(0),a1=la(1),a2=la(2),a3=la(3),a4=la(4);
+
+    /* SOURCES */
+    secLbl(ctx,'Data Sources',Ly.src-NH*.85,a0);
+    ['Excel / CSV','SQL Server','Google Sheets'].forEach(function(n,i){
+      ctx.save();ctx.globalAlpha=a0;rr(ctx,nx(i)-NW/2,Ly.src-NH/2,NW,NH,3,PALE,LIGHT);ctx.restore();
+      txt(ctx,n,nx(i),Ly.src,9.5,'#3D3D3A',a0,true);
+    });
+
+    /* arrows src→etl: start BELOW box, stop ABOVE etl text zone */
+    for(var i=0;i<3;i++)
+      arrowLine(ctx,nx(i),Ly.src+NH/2,nx(i),Ly.etl-NH/2,GRAY,Math.min(a0,a1),NH*0.6);
+
+    /* ETL */
+    secLbl(ctx,'ETL / Transform',Ly.etl-NH*0.85,a1);
+    ctx.save();ctx.globalAlpha=a1;rr(ctx,PAD,Ly.etl-NH/2,W-PAD*2,NH,3,TEAL_PALE,'#D4EDEA');ctx.restore();
+    ['Azure Data Factory','dbt','Google Dataflow'].forEach(function(n,i){
+      txt(ctx,n,PAD+(W-PAD*2)/6+i*(W-PAD*2)/3,Ly.etl,9.5,TEAL,a1,true);
+      if(i<2){ctx.save();ctx.globalAlpha=a1*.35;ctx.strokeStyle='#D4EDEA';ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(PAD+(W-PAD*2)/3*(i+1),Ly.etl-NH/2+6);
+        ctx.lineTo(PAD+(W-PAD*2)/3*(i+1),Ly.etl+NH/2-6);ctx.stroke();ctx.restore();}
+    });
+
+    /* arrow etl→wh: center, stops above wh text */
+    arrowLine(ctx,W/2,Ly.etl+NH/2,W/2,Ly.wh-NH/2,TEAL,Math.min(a1,a2),NH*0.6);
+
+    /* WAREHOUSE */
+    secLbl(ctx,'Data Warehouse',Ly.wh-NH*0.85,a2);
+    ['Snowflake','Databricks','BigQuery'].forEach(function(n,i){
+      ctx.save();ctx.globalAlpha=a2;rr(ctx,nx(i)-NW/2,Ly.wh-NH/2,NW,NH,3,PALE,LIGHT);ctx.restore();
+      txt(ctx,n,nx(i),Ly.wh,9.5,'#3D3D3A',a2,true);
+    });
+
+    /* arrows wh→mod */
+    for(var i=0;i<3;i++)
+      arrowLine(ctx,nx(i),Ly.wh+NH/2,nx(i),Ly.mod-NH/2,GOLD,Math.min(a2,a3),NH*0.6);
+
+    /* MODELING */
+    secLbl(ctx,'Data Modeling',Ly.mod-NH*0.85,a3);
+    ctx.save();ctx.globalAlpha=a3;rr(ctx,PAD,Ly.mod-NH/2,W-PAD*2,NH,3,GOLD_PALE,'#F5EDD6');ctx.restore();
+    ['Tabular Editor 3','Visual Studio · DAX'].forEach(function(n,i){
+      txt(ctx,n,PAD+(W-PAD*2)/4+i*(W-PAD*2)/2,Ly.mod,9.5,GOLD,a3,true);
+    });
+
+    /* mod→viz handled by fan arrows in viz section */
+
+    /* VISUALIZATION — mũi tên từ center xuống 3 node */
+    secLbl(ctx,'Visualization',Ly.viz-NH*0.85,a4);
+    if(a4>0.01){
+      var midY=Ly.mod+NH/2+(Ly.viz-NH/2-Ly.mod-NH/2)*0.35;
+      /* vertical stem */
+      arrowLine(ctx,W/2,Ly.mod+NH/2,W/2,midY,GOLD,a4,2);
+      /* fan to 3 nodes */
+      arrowLine(ctx,W/2,midY,nx(0),Ly.viz-NH/2,GOLD,a4,NH*0.5);
+      arrowLine(ctx,W/2,midY,nx(1),Ly.viz-NH/2,GOLD,a4,NH*0.5);
+      arrowLine(ctx,W/2,midY,nx(2),Ly.viz-NH/2,GOLD,a4,NH*0.5);
+    }
+    [{l:'Power BI',f:TEAL,t:'#fff'},{l:'Insights',f:GOLD,t:'#fff'},{l:'Looker Studio',f:TEAL,t:'#fff'}].forEach(function(v,i){
+      ctx.save();ctx.globalAlpha=a4;rr(ctx,nx(i)-NW/2,Ly.viz-NH/2,NW,NH,3,v.f,v.f);ctx.restore();
+      txt(ctx,v.l,nx(i),Ly.viz,10,v.t,a4,true);
+    });
+
+    /* PARTICLES: 3 dots depart simultaneously from swapped source lanes,
+       converge to ETL center, fan to WH, converge to MOD center, fan to VIZ */
+    var minA=Math.min(a0,a1,a2,a3,a4);
+    /* source lane mapping: 0=Excel/CSV(left), 1=SQL Server(mid), 2=Google Sheets(right) */
+    var srcLane=[0,1,2]; /* screen position of each dot's source */
+    var whLane=[0,1,2];  /* WH node each dot visits */
+    var vizLane=[0,1,2]; /* VIZ node each dot ends at */
+    if(minA>0.03){
+      parts.forEach(function(p){
+        var sl=srcLane[p.lane], wl=whLane[p.lane], vl=vizLane[p.lane];
+        var wpts=[
+          {x:nx(sl),  y:Ly.src+NH/2},      /* 0: leave source */
+          {x:nx(sl),  y:Ly.etl-NH*0.5},    /* 1: approach ETL */
+          {x:W/2,     y:Ly.etl},            /* 2: converge at ETL center */
+          {x:W/2,     y:Ly.etl+NH/2},      /* 3: exit ETL center */
+          {x:nx(wl),  y:Ly.wh-NH*0.5},     /* 4: fan to WH node */
+          {x:nx(wl),  y:Ly.wh+NH/2},       /* 5: exit WH node */
+          {x:nx(wl),  y:Ly.mod-NH*0.5},    /* 6: approach MOD */
+          {x:W/2,     y:Ly.mod},            /* 7: converge at MOD center */
+          {x:W/2,     y:Ly.mod+NH/2},      /* 8: exit MOD center */
+          {x:nx(vl),  y:Ly.viz-NH*0.5},    /* 9: fan to VIZ node */
+          {x:nx(vl),  y:Ly.viz}             /* 10: arrive VIZ */
+        ];
+        var total=wpts.length-1;
+        var seg=Math.min(Math.floor(p.prog*total),total-1);
+        var segT=(p.prog*total)-seg;
+        var et=segT<0.5?2*segT*segT:1-Math.pow(-2*segT+2,2)/2;
+        var w0=wpts[seg],w1=wpts[seg+1];
+        var px=w0.x+(w1.x-w0.x)*et,py=w0.y+(w1.y-w0.y)*et;
+        ctx.save();
+        ctx.globalAlpha=0.9*minA;ctx.fillStyle=DOT_COLOR;
+        ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fill();
+        ctx.globalAlpha=0.2*minA;
+        ctx.beginPath();ctx.arc(px,py,9,0,Math.PI*2);ctx.fill();
+        ctx.restore();
+      });
+    }
+
+    anim+=0; /* timing handled by delta above */
+    requestAnimationFrame(draw);
+  }
+
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){requestAnimationFrame(draw);});
+  window.addEventListener('resize',function(){
+    var d=setSize();W=d.W;H=d.H;
+    ctx=canvas.getContext('2d');ctx.scale(DPR,DPR);
+    lastT=null;anim=0;requestAnimationFrame(draw);
+  });
+})();
+</script>
+</body>
+</html>

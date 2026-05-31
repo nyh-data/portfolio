@@ -124,11 +124,11 @@ nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0
 .exp-ul li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:12px;}
 
 /* SKILLS */
-.skills{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--g100);background:var(--white);}
-.sk-group{padding:28px 36px;border-right:1px solid var(--g100);}
-.sk-group:last-child,.sk-group:nth-child(3){border-right:none;}
-.sk-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.sk-lbl::after{content:'';flex:1;height:1px;background:var(--gold-light);}
+.skills-rows{padding:32px 48px;border-bottom:1px solid var(--g100);background:var(--white);}
+.sk-row{display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:center;padding:16px 0;border-bottom:1px solid var(--g100);}
+.sk-row:last-child{border-bottom:none;padding-bottom:0;}
+.sk-row:first-child{padding-top:0;}
+.sk-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
 .sk-tags{display:flex;flex-wrap:wrap;gap:6px;}
 .sk-tag{font-size:11px;font-family:var(--mono);padding:4px 10px;background:var(--g50);border:1px solid var(--g100);color:var(--g700);transition:background .15s,border-color .15s;}
 .sk-tag:hover{background:var(--gold-light);border-color:var(--gold);}
@@ -181,10 +181,8 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   .exp-item{grid-template-columns:1fr;gap:8px;padding:24px 0;}
   .exp-period{font-size:9px;}
   .exp-title{font-size:16px;}
-  .skills{grid-template-columns:1fr 1fr;}
-  .sk-group{padding:20px 16px;border-right:1px solid rgba(255,255,255,.08);}
-  .sk-group:nth-child(2n){border-right:none;}
-  .sk-group:nth-child(3){border-right:1px solid rgba(255,255,255,.08);}
+  .skills-rows{padding:20px 16px;}
+  .sk-row{grid-template-columns:1fr;gap:8px;padding:14px 0;align-items:start;}
   footer{grid-template-columns:1fr;padding:24px 16px;gap:20px;}
   .ft-bottom{padding:14px 16px;flex-direction:column;gap:4px;}
   .proj-meta{flex-wrap:wrap;gap:12px;}
@@ -204,7 +202,7 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="nav-left">
     <a href="#work" class="nav-link">Work</a>
     <a href="#experience" class="nav-link">Experience</a>
-    <a href="#consulting" class="nav-link">Consulting</a>
+    <a href="#freelance" class="nav-link">Freelance</a>
     <a href="#skills" class="nav-link">Skills</a>
   </div>
   <div class="nav-center">
@@ -218,19 +216,9 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
 
 <section class="masthead">
   <div>
-    <div class="kicker">Business Intelligence Analyst · Analytics Engineer · Trainer</div>
+    <div class="kicker">BI Analyst · Analytics Engineer · Data Instructor</div>
     <h1 class="headline">Data, dashboards,<br>and <em>decisions.</em></h1>
-    <p class="subhead">Business Intelligence Analyst & Analytics Engineer with 5 years of experience at VTA Company, delivering consulting-driven BI and AI solutions across diverse freelance projects in both domestic and international markets. Specialized in designing end-to-end data systems — from ETL pipelines and scalable data models to executive dashboards and AI-powered analytics — supporting decision-making from team to company level.</p>
-    <div class="pills">
-      <span class="pill">Power BI</span>
-      <span class="pill">Looker Studio</span>
-      <span class="pill">Databricks</span>
-      <span class="pill">SQL Server</span>
-      <span class="pill">Azure Data Factory</span>
-      <span class="pill">Tabular Editor 3</span>
-      <span class="pill">Google Dataflow</span>
-      <span class="pill">dbt</span>
-    </div>
+    <p class="subhead">I'm a BI Analyst and Analytics Engineer working independently with companies worldwide. My work runs end-to-end — ETL pipelines, data models, semantic layers, and executive dashboards — across retail, energy, beauty, jewelry, and professional training. The interesting part is always the same: removing what doesn't matter until what's left is exactly what the business needs to decide.</p>
     <div class="avail"><span class="avail-dot"></span>Available for freelance, consulting, and remote opportunities in BI, data analytics, and AI-driven solutions.</div>
   </div>
   <div class="pipeline-wrap" style="width:100%;min-height:360px;">
@@ -239,16 +227,16 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
 </section>
 
 <div class="ticker">
-  <div class="t-item"><div class="t-num">5<span>yrs</span></div><div class="t-lbl">Professional experience in data analytics</div></div>
-  <div class="t-item"><div class="t-num">8<span>+</span></div><div class="t-lbl">Analytics projects across e-commerce & retail</div></div>
-  <div class="t-item"><div class="t-num">4<span>+</span></div><div class="t-lbl">Freelance & consulting engagements delivered</div></div>
-  <div class="t-item"><div class="t-num">5<span>+</span></div><div class="t-lbl">Industries served — retail, e-commerce, e-learning, beauty, jewelry, energy</div></div>
+  <div class="t-item"><div class="t-num">5<span>yrs</span></div><div class="t-lbl">Across BI, analytics engineering, and consulting</div></div>
+  <div class="t-item"><div class="t-num">8<span>+</span></div><div class="t-lbl">Analytics projects</div></div>
+  <div class="t-item"><div class="t-num">4<span>+</span></div><div class="t-lbl">Freelance & consulting engagements</div></div>
+  <div class="t-item"><div class="t-num">5<span>+</span></div><div class="t-lbl">Industries served: retail, e-commerce, energy, beauty, jewelry, training</div></div>
 </div>
 
 <div class="s-head" id="work">
   <span class="s-head-lbl">Projects</span>
   <div class="s-head-line"></div>
-  <span class="s-head-num">08 total</span>
+  <span class="s-head-num">09 total</span>
 </div>
 <div class="proj-list">
   <div class="pl-item"><span class="pl-num">01</span><span class="pl-name">Digital Performance</span></div>
@@ -259,6 +247,7 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="pl-item hi"><span class="pl-num">06</span><span class="pl-name">Customer Segment ★</span></div>
   <div class="pl-item"><span class="pl-num">07</span><span class="pl-name">Store Space Management</span></div>
   <div class="pl-item"><span class="pl-num">08</span><span class="pl-name">Optimal Inventory</span></div>
+  <div class="pl-item"><span class="pl-num">09</span><span class="pl-name">Campaign Performance</span></div>
 </div>
 
 <div class="projects">
@@ -331,7 +320,7 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
 <div class="s-head" id="experience">
   <span class="s-head-lbl">Work experience</span>
   <div class="s-head-line"></div>
-  <span class="s-head-num"> 2020 — Present</span>
+  <span class="s-head-num">5 years</span>
 </div>
 <div class="exp-wrap">
 
@@ -339,18 +328,29 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
     <div>
       <div class="exp-period">Mar 2023 — Present</div>
       <div class="exp-co">VTA Company</div>
-      <div class="exp-loc">HCM · Full-time</div>
+      <div class="exp-loc">Data Science Department</div>
     </div>
     <div>
-      <div class="exp-dept">Data Science Department</div>
       <div class="exp-title">Business Intelligence Analyst</div>
       <ul class="exp-ul">
-        <li>Led the design and development of interactive dashboards using Power BI to track key business KPIs across departments.</li>
-        <li>Defined and standardized business metrics, improving data consistency and alignment across product, marketing, and operations teams.</li>
-        <li>Analyzed large-scale datasets to identify trends, driving data-backed decisions that improved operational efficiency.</li>
-        <li>Presented insights and strategic recommendations to senior stakeholders, influencing key business decisions.</li>
-        <li>Collaborated cross-functionally to ensure data accuracy, integrity, and alignment with business objectives.</li>
+        <li>Sole owner of the semantic model on Tabular Editor 3, managing the architecture, security, and evolution of the enterprise data model behind the company's entire reporting system.</li>
+        <li>Doubled the integrated multi-star schema in facts and dimensions versus the legacy system, adding new analytical domains and refactoring existing ones to standardise grain and business logic.</li>
+        <li>Built the DAX measure library and calculation group framework, consolidating time intelligence, comparative analysis, and scenario modeling into reusable components shared across all reports.</li>
+        <li>Designed a multi-dimensional security architecture combining Row-Level and Object-Level Security: dimensional hierarchy, role-based membership, column-level masking, and table-level isolation, letting one semantic model serve every tier from store level to C-suite.</li>
+        <li>Designed Databricks views feeding the reports, built auto-run data refreshes, and created real-time event analytics for leadership to track short-run events and adjust decisions on major multi-day campaigns.</li>
+        <li>Owned the Store Space Management project start to finish: scoping, analytical approach, data model and reports, and handover to operations.</li>
+        <li>Owned the Customer Segmentation project start to finish: analytical framework, data model and reports, and insight for relevant departments to apply in strategy.</li>
+        <li>Ran Power BI training for departments, analysts, and managers who wanted to build their own reports on the semantic model.</li>
       </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
+        <div class="exp-dept">Tabular Editor 3</div>
+        <div class="exp-dept">Power BI</div>
+        <div class="exp-dept">DAX</div>
+        <div class="exp-dept">Databricks</div>
+        <div class="exp-dept">dbt</div>
+        <div class="exp-dept">RLS</div>
+        <div class="exp-dept">OLS</div>
+      </div>
     </div>
   </div>
 
@@ -358,18 +358,26 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
     <div>
       <div class="exp-period">Jan 2021 — Feb 2023</div>
       <div class="exp-co">VTA Company</div>
-      <div class="exp-loc">HCM · Full-time</div>
+      <div class="exp-loc">IT Department · BI Team</div>
     </div>
     <div>
-      <div class="exp-dept">IT Department</div>
       <div class="exp-title">Analytics Engineer</div>
       <ul class="exp-ul">
-        <li>Built and maintained ETL pipelines using Azure Data Factory, integrating data into SQL Server and Azure Synapse Analytics.</li>
-        <li>Designed and implemented scalable data models (star schema) to support reporting and analytics.</li>
-        <li>Optimized complex SQL queries, significantly improving data processing performance.</li>
-        <li>Developed and maintained business dashboards in Power BI for internal stakeholders.</li>
-        <li>Worked closely with business teams to translate requirements into reliable data solutions.</li>
+        <li>Built and maintained complex ETL pipelines on Azure Data Factory, scheduled in batch from POS, ERP (Microsoft Dynamics AX), and other internal systems into a staging database, then into the data warehouse on SQL Server.</li>
+        <li>Designed the warehouse data model as an integrated multi-star schema, with sales, inventory, customer, finance, and store operations coexisting in a single model with linked facts and dimensions, forming the foundation for the entire reporting system.</li>
+        <li>Developed a DAX measure library spanning sales, inventory, customer, finance, and store operations, powering ~28 Power BI dashboards used at store level (200+ store managers), across departments, and at executive level (CEO/CFO/COO) for strategic decision meetings.</li>
+        <li>Optimised the performance of stored procedures handling large-scale transaction loads and complex DAX measures, keeping dashboard load times within acceptable ranges for end users at store and executive level.</li>
+        <li>Worked closely with the Management Accounting Department to build analytical reports for the company's strategic projects, particularly analyses prepared for executive leadership to inform strategic decisions.</li>
+        <li>Trained analysts across multiple departments to leverage the shared data model and build reports for their own departments independently.</li>
       </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
+        <div class="exp-dept">Azure Data Factory</div>
+        <div class="exp-dept">SQL Server</div>
+        <div class="exp-dept">Power BI</div>
+        <div class="exp-dept">DAX</div>
+        <div class="exp-dept">Star Schema</div>
+        <div class="exp-dept">Stored Procedures</div>
+      </div>
     </div>
   </div>
 
@@ -377,25 +385,31 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
     <div>
       <div class="exp-period">Aug 2020 — Dec 2020</div>
       <div class="exp-co">VTA Company</div>
-      <div class="exp-loc">HCM · Full-time</div>
+      <div class="exp-loc">E-commerce Department</div>
     </div>
     <div>
-      <div class="exp-dept">E-commerce Department</div>
       <div class="exp-title">Data Analyst</div>
       <ul class="exp-ul">
-        <li>Developed dashboards and reports using Looker Studio to monitor customer behavior and sales performance.</li>
-        <li>Processed and analyzed large datasets using Google Cloud tools (BigQuery, Dataflow).</li>
-        <li>Conducted A/B testing and cohort analysis to improve customer engagement and conversion rates.</li>
-        <li>Collaborated with marketing and product teams to deliver actionable insights.</li>
-        <li>Wrote and optimized SQL queries to support data extraction and transformation.</li>
+        <li>Built and maintained Looker Studio reports for the entire E-commerce department, from managers and team leads to operators, with each role having its own view aligned to its scope of work.</li>
+        <li>Worked directly with performance marketing and operations teams to understand how they made decisions, then translated those needs into reports that measured exactly the metrics they used.</li>
+        <li>Consolidated data from multiple sources including SQL Server, website tracking, GA, Facebook, and e-commerce marketplaces, flowing through a GCP pipeline (Dataflow → BigQuery) and visualised in Looker Studio.</li>
+        <li>Evaluated post-campaign marketing performance by analysing results from A/B tests run by the marketing team and benchmarking performance across channels.</li>
+        <li>Conducted cohort analysis on customer behaviour to help the team understand retention patterns across different acquisition months.</li>
       </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
+        <div class="exp-dept">Looker Studio</div>
+        <div class="exp-dept">BigQuery</div>
+        <div class="exp-dept">Google Dataflow</div>
+        <div class="exp-dept">Cohort Analysis</div>
+        <div class="exp-dept">Campaign Analytics</div>
+      </div>
     </div>
   </div>
 
 </div>
 
-<div class="s-head" id="consulting">
-  <span class="s-head-lbl">Consulting & side projects</span>
+<div class="s-head" id="freelance">
+  <span class="s-head-lbl">Freelance</span>
   <div class="s-head-line"></div>
   <span class="s-head-num">05 engagements</span>
 </div>
@@ -405,22 +419,24 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="exp-item">
     <div>
       <div class="exp-period">New Zealand · Freelance</div>
-      <div class="exp-co">Ecotricity Company</div>
-      <div class="exp-loc">Power BI Specialist</div>
+      <div class="exp-co">Energy Company · Confidential</div>
     </div>
     <div>
-      <div class="exp-dept" style="margin-bottom:12px;">Pricing Department</div>
-      <ul class="exp-ul" style="margin-bottom:12px;">
-        <li>Designed and delivered end-to-end BI solutions using Power BI, integrating multiple data sources.</li>
-        <li>Built optimized dashboards tailored to business requirements, improving reporting efficiency and usability.</li>
-        <li>Enhanced report performance through data modeling and DAX optimization.</li>
-        <li>Provided consulting and training to stakeholders on data analysis and reporting best practices.</li>
-        <li>Managed project communication and progress updates with international clients.</li>
+      <div class="exp-title">Power BI Specialist</div>
+      <ul class="exp-ul">
+        <li>Designed a snowflake schema on the warehouse with fact and dimension views written in SQL, modeled to the grain the energy domain requires.</li>
+        <li>Built a single Power BI semantic model on top of the warehouse views, with Power Query consolidating supplementary Excel inputs and DAX measures standardised so every department reads the same numbers.</li>
+        <li>Designed multi-tier row-level security covering leadership with full visibility, departments scoped to their own data, and customers scoped to their own records, deployed to Power BI Service with scheduled refresh and gateway configuration.</li>
+        <li>Engineered a JSON-defined Power BI theme and report template, aligned to the company's brand system and versioned so future reports inherit the look without rework.</li>
+        <li>Designed decision-oriented, storytelling-led analytical report pages.</li>
+        <li>Authored the technical documentation and training so the team could maintain the model, extend reports, and onboard new analysts after handover.</li>
       </ul>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
+        <div class="exp-dept">Power BI</div>
+        <div class="exp-dept">DAX</div>
         <div class="exp-dept">Snowflake</div>
         <div class="exp-dept">Power Query</div>
-        <div class="exp-dept">Power BI</div>
+        <div class="exp-dept">RLS</div>
       </div>
     </div>
   </div>
@@ -428,18 +444,22 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="exp-item">
     <div>
       <div class="exp-period">Vietnam · Freelance</div>
-      <div class="exp-co">Beauty Company</div>
-      <div class="exp-loc">Confidential Client</div>
+      <div class="exp-co">Beauty Company · Confidential</div>
     </div>
     <div>
-      <div class="exp-dept" style="margin-bottom:12px;">Analytics Reporting</div>
-      <ul class="exp-ul" style="margin-bottom:12px;">
-        <li>Designed dashboards using Looker Studio to track service performance and customer segmentation across locations.</li>
-        <li>Analyzed service performance and campaign effectiveness, providing insights to support marketing decisions.</li>
+      <div class="exp-title">BI Solutions Consultant</div>
+      <ul class="exp-ul">
+        <li>Advised the client from day one on the right data architecture for a 4-store spa, comparing tools and stack options, estimating operating and long-term maintenance costs, alongside guidance on spa-specific metrics such as customer lifetime value, therapist utilization, capacity occupancy, and no-show rate.</li>
+        <li>Integrated data from Facebook Ads, Google Ads, and local CRM software into BigQuery, with a scheduled automation pipeline on GCP.</li>
+        <li>Designed and built the reporting suite on Looker Studio tailored to the spa model, including Profit & Loss, sales (service vs product), customer retention with RFM segmentation, marketing ROI by channel, staff performance and commission tracking, store comparison across the 4 locations, and inventory for both retail products and in-service consumables.</li>
+        <li>Ran 1-on-1 training with the client's data analyst to hand over the full operational know-how of the system, alongside group training for staff on how to read and use the reports, and delivered full documentation for the internal team to maintain the system after the engagement.</li>
       </ul>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
         <div class="exp-dept">BigQuery</div>
         <div class="exp-dept">Looker Studio</div>
+        <div class="exp-dept">GCP</div>
+        <div class="exp-dept">RFM Segmentation</div>
+        <div class="exp-dept">Marketing Analytics</div>
       </div>
     </div>
   </div>
@@ -447,56 +467,69 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <div class="exp-item">
     <div>
       <div class="exp-period">Vietnam · Freelance</div>
-      <div class="exp-co">Jewelry Company</div>
-      <div class="exp-loc">Operations Analytics</div>
+      <div class="exp-co">Jewelry Company · Confidential</div>
     </div>
     <div>
-      <div class="exp-dept" style="margin-bottom:12px;">Operations Dashboard</div>
-      <ul class="exp-ul" style="margin-bottom:12px;">
-        <li>Built operational reports to monitor store performance and sales metrics across retail locations.</li>
-        <li>Improved visibility of key KPIs, enabling better decision-making for the operations team.</li>
+      <div class="exp-title">BI Solutions Consultant</div>
+      <ul class="exp-ul">
+        <li>Advised the client (who required a 100% Excel solution) on the file architecture suited to multi-year sales data, proposing a folder-based ingestion pattern instead of a single-file approach so Power Query could consolidate multiple same-format Excel files into one table, alongside guidance on measures, theme, and the storytelling structure of the report.</li>
+        <li>Designed a folder-based data architecture with child files in the same format split by time range, using Power Query to consolidate, clean, and enrich the data across dimensions for multi-angle analysis, including location hierarchy, time hierarchy, product hierarchy, and customer hierarchy.</li>
+        <li>Built the data model in Power Pivot with relationships between fact and dimension tables, wrote a DAX measure library for sales analysis across store, customer, product, and location, covering base sales metrics, time intelligence, customer analytics, and product performance, packaged into a single deliverable file that auto-refreshes when folder data updates.</li>
+        <li>Ran hands-on training for operating staff on how to refresh data, how to add new data files in the correct format to the folder, and how to write DAX measures when extending the report, so internal staff could maintain the system on their own.</li>
       </ul>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
         <div class="exp-dept">Excel</div>
-        <div class="exp-dept">Power BI</div>
+        <div class="exp-dept">Power Pivot</div>
         <div class="exp-dept">Power Query</div>
         <div class="exp-dept">DAX</div>
+        <div class="exp-dept">Dimensional Modeling</div>
       </div>
     </div>
   </div>
 
   <div class="exp-item">
     <div>
-      <div class="exp-period">Corporate Training</div>
-      <div class="exp-co">E-learning Company</div>
-      <div class="exp-loc">Internal Training</div>
+      <div class="exp-period">Vietnam · Freelance</div>
+      <div class="exp-co">Professional Training Company · Confidential</div>
     </div>
     <div>
-      <div class="exp-dept" style="margin-bottom:12px;">Data Training</div>
-      <ul class="exp-ul" style="margin-bottom:12px;">
-        <li>Delivered training sessions on Google Sheets, Looker Studio, and data analysis for business users within the company.</li>
-        <li>Developed training materials and hands-on exercises to improve data literacy and practical skills across teams.</li>
+      <div class="exp-title">BI Solutions Consultant</div>
+      <ul class="exp-ul">
+        <li>Advised the client on a data architecture fit to their operational context, selecting Google Sheets as staging and dimension layer, and Looker Studio as semantic and reporting layer, alongside guidance on metrics, theme, and the storytelling structure for the reporting system around a 6-stage Customer Flow funnel (Suspect, Lead, Prospect, Customer, Success, Advocate).</li>
+        <li>Brought raw data from the client into Google Sheets as the staging layer, cleaned and enriched the data across dimensions for multi-angle analysis, applying normalization and lookup-based standardisation techniques to consolidate fragmented values into a canonical form.</li>
+        <li>Designed the star schema in Looker Studio with a central fact table and related dimension tables, wrote the metrics for Marketing, Sales, Customer segmentation, and Class analytical areas, with analytical reporting covering both B2C and B2B customer groups under a unified semantic model.</li>
+        <li>Ran 1-on-1 training for staff on the end-to-end data discovery process, from data exploration, data cleaning, and analytical thinking, through to using Looker Studio to build reports independently, and delivered video walkthroughs and detailed documentation for the internal team to sustain the system after the engagement.</li>
       </ul>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
         <div class="exp-dept">Google Sheets</div>
         <div class="exp-dept">Looker Studio</div>
+        <div class="exp-dept">Star Schema</div>
+        <div class="exp-dept">Funnel Analysis</div>
+        <div class="exp-dept">Marketing Analytics</div>
       </div>
     </div>
   </div>
 
   <div class="exp-item">
     <div>
-      <div class="exp-period">Instructor</div>
+      <div class="exp-period">Vietnam · Contract</div>
       <div class="exp-co">A1 Demy</div>
-      <div class="exp-loc">Education</div>
     </div>
     <div>
-      <div class="exp-dept" style="margin-bottom:12px;">Teaching</div>
-      <div class="exp-title">Data Analysis & BI Instructor</div>
+      <div class="exp-title">Data Analytics Instructor</div>
       <ul class="exp-ul">
-        <li>Taught foundational data analysis and BI concepts to learners at A1 Demy.</li>
-        <li>Guided students through real-world case studies and end-to-end dashboard development projects.</li>
+        <li>Designed both the Power BI and Looker Studio curricula from scratch, establishing analytical thinking before tools, including a data discovery process framework (business understanding, data exploration, cleaning, EDA) and a reporting framework for business contexts, shaping learners into the mindset of a professional Data Analyst.</li>
+        <li>Taught the Power BI course along a three-stage path covering ETL with Power Query, Data Modeling and DAX (star schema, time intelligence, advanced calculations), and Data Visualization with dashboard UX/UI principles, closing with a capstone project based on a real business problem.</li>
+        <li>Taught the Looker Studio course combining a business reporting framework with deep technical skills, including connecting Google sources, data blending to unify multi-source data, calculated fields, and interactivity, closing with two capstone projects on marketing performance analytics and overall business performance analytics for executive leadership.</li>
+        <li>Trained learners from diverse backgrounds, including staff from marketing, sales, finance, accounting, planning, HR, and risk management; data specialists; senior managers and business owners; and students and professionals transitioning into data, delivered across online live, offline, and recorded video formats.</li>
       </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
+        <div class="exp-dept">Power BI</div>
+        <div class="exp-dept">Looker Studio</div>
+        <div class="exp-dept">DAX</div>
+        <div class="exp-dept">Power Query</div>
+        <div class="exp-dept">Curriculum Design</div>
+      </div>
     </div>
   </div>
 
@@ -506,13 +539,35 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   <span class="s-head-lbl">Skills & tools</span>
   <div class="s-head-line"></div>
 </div>
-<div class="skills">
-  <div class="sk-group"><div class="sk-lbl">Visualization</div><div class="sk-tags"><span class="sk-tag">Looker Studio</span><span class="sk-tag">Power BI</span></div></div>
-  <div class="sk-group"><div class="sk-lbl">Data Modeling</div><div class="sk-tags"><span class="sk-tag">Visual Studio</span><span class="sk-tag">Tabular Editor 3</span></div></div>
-  <div class="sk-group"><div class="sk-lbl">Big Data</div><div class="sk-tags"><span class="sk-tag">Databricks</span><span class="sk-tag">BigQuery</span><span class="sk-tag">Snowflake</span></div></div>
-  <div class="sk-group"><div class="sk-lbl">Databases</div><div class="sk-tags"><span class="sk-tag">SQL Server</span><span class="sk-tag">MySQL</span><span class="sk-tag">PostgreSQL</span></div></div>
-  <div class="sk-group"><div class="sk-lbl">ETL Tools</div><div class="sk-tags"><span class="sk-tag">Azure Data Factory</span><span class="sk-tag">Google Dataflow</span><span class="sk-tag">SSIS</span><span class="sk-tag">dbt</span></div></div>
-  <div class="sk-group"><div class="sk-lbl">Other</div><div class="sk-tags"><span class="sk-tag">Excel</span><span class="sk-tag">Google Sheets</span><span class="sk-tag">Power Query</span><span class="sk-tag">Azure Synapse</span></div></div>
+<div class="skills-rows">
+  <div class="sk-row">
+    <div class="sk-lbl">Visualization</div>
+    <div class="sk-tags"><span class="sk-tag">Power BI</span><span class="sk-tag">Looker Studio</span></div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Semantic Modeling</div>
+    <div class="sk-tags"><span class="sk-tag">Tabular Editor 3</span><span class="sk-tag">DAX</span><span class="sk-tag">Calculation Groups</span><span class="sk-tag">RLS</span><span class="sk-tag">OLS</span></div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Data Warehouse</div>
+    <div class="sk-tags"><span class="sk-tag">Databricks</span><span class="sk-tag">BigQuery</span><span class="sk-tag">Snowflake</span><span class="sk-tag">SQL Server</span></div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">ETL</div>
+    <div class="sk-tags"><span class="sk-tag">Azure Data Factory</span><span class="sk-tag">Google Dataflow</span><span class="sk-tag">dbt</span><span class="sk-tag">Power Query</span></div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Spreadsheet & Staging</div>
+    <div class="sk-tags"><span class="sk-tag">Excel</span><span class="sk-tag">Power Pivot</span><span class="sk-tag">Google Sheets</span></div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Analytics</div>
+    <div class="sk-tags"><span class="sk-tag">RFM Segmentation</span><span class="sk-tag">Cohort Analysis</span><span class="sk-tag">Dimensional Modeling</span><span class="sk-tag">Star Schema</span></div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Methods & Workflow</div>
+    <div class="sk-tags"><span class="sk-tag">BI Consulting</span><span class="sk-tag">Training</span><span class="sk-tag">Documentation</span><span class="sk-tag">Workflow Design</span><span class="sk-tag">Project Management</span><span class="sk-tag">Handover & Enablement</span></div>
+  </div>
 </div>
 
 <footer id="contact">
@@ -526,11 +581,11 @@ footer{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(-
   </div>
   <div>
     <div class="ft-lbl">Specialization</div>
-    <div class="ft-val">Business Intelligence & Data Analytics<br>Dashboard Design · ETL Engineering<br>Data Training & Consulting</div>
+    <div class="ft-val">Business Intelligence & Analytics Engineering<br>Semantic Modeling · ETL · Executive Dashboards<br>BI/AI Operations Systems</div>
   </div>
   <div>
     <div class="ft-lbl">Open for</div>
-    <div class="ft-val">Freelance data projects<br>Dashboard & reporting consulting<br>International remote work</div>
+    <div class="ft-val">Remote freelance engagements<br>BI consulting for businesses<br>Internal training & system handover</div>
   </div>
 </footer>
 <div class="ft-bottom">
